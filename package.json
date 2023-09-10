@@ -1,5 +1,5 @@
 {
-  "name": "webpack-5.0-template",
+  "name": "Hip Hop and Pizza Wangs",
   "version": "1.0.0",
   "description": "",
   "main": "public/main.js",
@@ -9,7 +9,7 @@
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": ["Keana", "Ryan", "Shari"],
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.2.0",
