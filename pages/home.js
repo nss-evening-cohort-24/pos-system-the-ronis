@@ -1,4 +1,3 @@
-import getItems from '../api/itemsData';
 import renderToDOM from '../utils/renderToDom';
 
 const homePage = (user) => {
@@ -10,9 +9,6 @@ const homePage = (user) => {
   <button type="button" id ='home-view-revenue-btn' class="btn btn-warning">View Revenue</button>
   `;
   renderToDOM('#main-container', domString);
-  document.querySelector('#home-view-orders-btn').addEventListener('click', () => {
-    getItems().then(console.warn);
-  });
 };
 
 export default homePage;
