@@ -1,0 +1,52 @@
+{
+  "-NeAr6hvZQF-rJYqs8rD": {
+    "firebaseKey": 1,
+    "name": "cold pizza",
+    "price": 38.21
+  },
+  "-NeAr6hvZQF-rJYqs8rE": {
+    "firebaseKey": 2,
+    "name": "honey bbq boneless",
+    "price": 33.87
+  },
+  "-NeAr6hvZQF-rJYqs8rF": {
+    "firebaseKey": 3,
+    "name": "caribbean jerk traditional",
+    "price": 10.81
+  },
+  "-NeAr6hwseNNLkaCWYd5": {
+    "firebaseKey": 4,
+    "name": "pineapple pizza",
+    "price": 45.75
+  },
+  "-NeAr6hwseNNLkaCWYd6": {
+    "firebaseKey": 5,
+    "name": "supreme pizza",
+    "price": 37.73
+  },
+  "-NeAr6hwseNNLkaCWYd7": {
+    "firebaseKey": 6,
+    "name": "cheese pizza",
+    "price": 5.92
+  },
+  "-NeAr6hwseNNLkaCWYd8": {
+    "firebaseKey": 7,
+    "name": "hot boneless",
+    "price": 21.55
+  },
+  "-NeAr6hwseNNLkaCWYd9": {
+    "firebaseKey": 8,
+    "name": "pineapple pizza",
+    "price": 3.35
+  },
+  "-NeAr6hxJ2IAocjcK1ak": {
+    "firebaseKey": 9,
+    "name": "supreme pizza",
+    "price": 17.67
+  },
+  "-NeAr6hxJ2IAocjcK1al": {
+    "firebaseKey": 10,
+    "name": "supreme pizza",
+    "price": 23.29
+  }
+}
