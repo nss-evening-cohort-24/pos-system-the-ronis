@@ -17,7 +17,7 @@ const domEvents = (user) => {
         });
       }
     }
-    
+
     if (e.target.id.includes('home-create-orders-btn')) {
       addOrderForm();
     }
