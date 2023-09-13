@@ -6,6 +6,10 @@ const domEvents = (user) => {
     if (e.target.id.includes('home-view-orders-btn')) {
       getOrders(user).then((array) => showOrders(array));
     }
+
+    if (e.target.id.includes('order-details')) {
+      console.warn('item details');
+    }
   });
 };
 

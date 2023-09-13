@@ -21,7 +21,7 @@ const showOrders = (array) => {
               <p class="card-text bold">${item.phone}</p>
               <p class="card-text bold">${item.email}</p>
               <p class="card-text bold">${item.ordertype}</p>
-              <a href="#" id='order-details' class="card-link">Details</a>
+              <a href="#" id='order-details' class="item-details">Details</a>
               <a href="#" id='order-edit' class="card-link">Edit</a>
               <a href="#" id='order-delete' class="card-link">Delete</a>
           </div>
