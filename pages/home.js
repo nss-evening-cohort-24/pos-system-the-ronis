@@ -8,7 +8,7 @@ const homePage = (user) => {
   <button type="button" id ='home-create-orders-btn' class="btn btn-info">Create An Order</button>
   <button type="button" id ='home-view-revenue-btn' class="btn btn-warning">View Revenue</button>
   `;
-  renderToDOM('#main-container', domString);
+  renderToDOM('#button-container', domString);
 };
 
 export default homePage;
