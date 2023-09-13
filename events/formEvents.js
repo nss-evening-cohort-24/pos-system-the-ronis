@@ -2,7 +2,7 @@ import { createOrder, getOrders, updateOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
 
 const formEvents = (user) => {
-  document.querySelector('#main-content').addEventListener('submit', (e) => {
+  document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
     if (e.target.id.includes('submit-order')) {
       const payload = {
