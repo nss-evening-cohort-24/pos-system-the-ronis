@@ -2,6 +2,8 @@ import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
 import { getOrders, deleteOrders } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
+import getItems from '../api/itemsData';
+import showItems from '../pages/showItems';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -20,6 +22,10 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('home-create-orders-btn')) {
       addOrderForm();
+    }
+
+    if (e.target.id.includes('order-details')) {
+      getItems().then(showItems);
     }
   });
 };
