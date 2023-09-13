@@ -17,6 +17,15 @@ const addOrderForm = (obj = {}) => {
       <label for="customerEmail" class="form-label">Customer Email</label>
       <input type="text" class="form-control" id="customer-email" placeholder="">
     </div>
+    <div class="form-group mb-3">
+      <label for="orderType" class="form-label">Order Type</label>
+      <select class="form-select" aria-label="orderType" id="order-type">
+        <option value="" selected disabled>Select an Order Type</option>
+        <option value="walk-in">Walk-In</option>
+        <option value="call-in">Call-In</option>
+      </select>
+    <div>
+    <br>
     <button type="submit" class="btn btn-success" id="submit">Create/Edit Order</button>
   </form>`;
 

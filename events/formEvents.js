@@ -7,8 +7,9 @@ const formEvents = (user) => {
     if (e.target.id.includes('submit-order')) {
       const payload = {
         name: document.querySelector('#order-name').value,
-        phone: document.querySelector('#order-phone').value,
-        email: document.querySelector('#order-email').value,
+        phone: document.querySelector('#customer-phone').value,
+        email: document.querySelector('#customer-email').value,
+        orderType: document.querySelector('#order-type').value,
         uid: user.uid,
       };
 
@@ -25,8 +26,9 @@ const formEvents = (user) => {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
         name: document.querySelector('#order-name').value,
-        phone: document.querySelector('#order-phone').value,
-        email: document.querySelector('#order-email').value,
+        phone: document.querySelector('#customer-phone').value,
+        email: document.querySelector('#customer-email').value,
+        orderType: document.querySelector('#order-type').value,
         uid: user.uid,
         firebaseKey,
       };
