@@ -9,7 +9,7 @@ const formEvents = (user) => {
         name: document.querySelector('#order-name').value,
         phone: document.querySelector('#customer-phone').value,
         email: document.querySelector('#customer-email').value,
-        orderType: document.querySelector('#order-type').value,
+        ordertype: document.querySelector('#order-type').value,
         uid: user.uid,
       };
 
@@ -28,7 +28,7 @@ const formEvents = (user) => {
         name: document.querySelector('#order-name').value,
         phone: document.querySelector('#customer-phone').value,
         email: document.querySelector('#customer-email').value,
-        orderType: document.querySelector('#order-type').value,
+        ordertype: document.querySelector('#order-type').value,
         uid: user.uid,
         firebaseKey,
       };

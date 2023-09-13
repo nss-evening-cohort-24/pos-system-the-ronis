@@ -2,7 +2,7 @@ import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
 import { getOrders, deleteOrders } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
-import getItems from '../api/itemsData';
+import { getItems, deleteItem } from '../api/itemsData';
 import showItems from '../pages/showItems';
 
 const domEvents = (user) => {
@@ -26,6 +26,15 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('order-details')) {
       getItems().then(showItems);
+    }
+
+    if (e.target.id.includes('item-delete')) {
+      if (window.confirm('Do you want to delete?')) {
+        const [, firebaseKey] = e.target.id.split('--');
+        deleteItem(firebaseKey).then(() => {
+          getItems().then(showItems);
+        });
+      }
     }
   });
 };
