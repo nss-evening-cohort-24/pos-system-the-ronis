@@ -1,3 +1,4 @@
+import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
 import { getOrders, deleteOrders } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
@@ -15,6 +16,10 @@ const domEvents = (user) => {
           getOrders(user).then((array) => showOrders(array));
         });
       }
+    }
+    
+    if (e.target.id.includes('home-create-orders-btn')) {
+      addOrderForm();
     }
   });
 };
