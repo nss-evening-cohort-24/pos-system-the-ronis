@@ -19,3 +19,22 @@ body {
   max-width: 250px;
   margin: 10px;
 }
+
+#form-container {
+  width: 60%;
+  margin: 150px auto !important; 
+  justify-content: center;
+  color: white;
+  
+  .form-group {
+    text-align: left !important;
+  }
+
+  #submit {
+    justify-self: center !important;  
+  }
+
+  #formModal {
+    color: black;
+  }
+}
