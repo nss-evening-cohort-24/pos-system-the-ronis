@@ -17,7 +17,7 @@ const showOrders = (array) => {
         <div class="orderCard card">
           <div class="card-body" style="height: 280px; width: 200px;">
             <h5 class="card-title">${item.name}</h5>
-              <p class="card-text bold">${item.status ? 'open' : 'closed'}</p>
+              <p class="card-text bold">${item.status ? 'closed' : 'open'}</p>
               <p class="card-text bold">${item.phone}</p>
               <p class="card-text bold">${item.email}</p>
               <p class="card-text bold">${item.ordertype}</p>

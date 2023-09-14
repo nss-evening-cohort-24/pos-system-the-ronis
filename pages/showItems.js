@@ -13,8 +13,8 @@ const orderDetails = (array) => {
       <div class="card-body">
         <h5 class="card-title">${item.name}</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">${item.price}</h6>
-        <a href="#" class="card-link" id="item-edit--${item.firebaesKey}">Edit Item</a>
-        <a href="#" class="card-link" id="item-delete--${item.firebaesKey}">Delete Item</a>
+        <a href="#" class="card-link" id="item-edit--${item.firebaseKey}">Edit Item</a>
+        <a href="#" class="card-link" id="item-delete--${item.firebaseKey}">Delete Item</a>
       </div>
     </div>`;
     });

@@ -14,4 +14,19 @@ const getItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getItems;
+const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/items/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+export {
+  getItems,
+  deleteItem,
+};
