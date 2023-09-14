@@ -18,7 +18,7 @@ const orderDetails = (array) => {
       </div>
     </div>`;
     });
-    domString += '<div><button type="button" class="btn btn-success">ADD ITEM</button><button type="button" class="btn btn-primary">GO TO PAYMENT</button></div></div>';
+    domString += '<div><button id="add-item-btn" type="button" class="btn btn-success">ADD ITEM</button><button type="button" class="btn btn-primary">GO TO PAYMENT</button></div></div>';
   }
   renderToDOM('#orders', domString);
 };

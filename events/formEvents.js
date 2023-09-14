@@ -1,5 +1,8 @@
+import { getItems, updateItems } from '../api/itemsData';
+import { createOrderItem } from '../api/orderItems';
 import { createOrder, getOrders, updateOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
+import orderDetails from '../pages/showItems';
 
 const formEvents = (user) => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
@@ -35,6 +38,20 @@ const formEvents = (user) => {
 
       updateOrder(payload).then(() => {
         getOrders(user.uid).then(showOrders);
+      });
+    }
+    if (e.target.id.includes('add-item-form')) {
+      const [, itemId, orderId] = e.target.id.split('--');
+      const payload = {
+        orderId,
+        itemId,
+      };
+      createOrderItem(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateItems(patchPayload).then(() => {
+          getItems(user.uid).then(orderDetails);
+        });
       });
     }
   });
