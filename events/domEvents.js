@@ -1,6 +1,6 @@
 import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
-import { getOrders, deleteOrders } from '../api/ordersData';
+import { getOrders, deleteOrders, getSingleOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
 import { getItems, deleteItem } from '../api/itemsData';
 import showItems from '../pages/showItems';
@@ -26,6 +26,11 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('order-details')) {
       getItems().then(showItems);
+    }
+
+    if (e.target.id.includes('order-edit')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleOrder(firebaseKey).then((orders) => addOrderForm(orders));
     }
 
     if (e.target.id.includes('item-delete')) {

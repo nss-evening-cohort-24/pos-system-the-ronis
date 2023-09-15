@@ -7,15 +7,15 @@ const addOrderForm = (obj = {}) => {
   <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
     <div class="form-group mb-3">
       <label for="orderName" class="form-label">Order Name</label>
-      <input type="text" class="form-control" id="order-name" placeholder="">
+      <input type="text" class="form-control" id="order-name" required>
     </div>
     <div class="form-group mb-3">
       <label for="customerPhone" class="form-label">Customer Phone</label>
-      <input type="text" class="form-control" id="customer-phone" placeholder="">
+      <input type="tel" class="form-control" id="customer-phone" required>
     </div>
     <div class="form-group mb-3">
       <label for="customerEmail" class="form-label">Customer Email</label>
-      <input type="text" class="form-control" id="customer-email" placeholder="">
+      <input type="text" class="form-control" id="customer-email" required>
     </div>
     <div class="form-group mb-3">
       <label for="orderType" class="form-label">Order Type</label>
