@@ -3,6 +3,10 @@ import addOrderForm from '../components/forms/addOrderForm';
 import { getOrders, deleteOrders, getSingleOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
 import { getItems, deleteItem } from '../api/itemsData';
+import addItemsToOrder from '../components/forms/addItems';
+import { createOrderItem, updateOrderItems } from '../api/orderItems';
+import orderDetails from '../pages/showItems';
+import { getOrderDetails } from '../api/mergedData';
 import showItems from '../pages/showItems';
 
 const domEvents = (user) => {
@@ -23,9 +27,35 @@ const domEvents = (user) => {
     if (e.target.id.includes('home-create-orders-btn')) {
       addOrderForm();
     }
+    if (e.target.id.includes('add-item-btn')) {
+      const [, orderId] = e.target.id.split('--');
+      getItems().then((array) => {
+        addItemsToOrder(array, orderId);
+      });
+    }
 
     if (e.target.id.includes('order-details')) {
-      getItems().then(showItems);
+      const [, firebaseKey] = e.target.id.split('--');
+      getOrderDetails(firebaseKey).then((details) => {
+        orderDetails(details);
+      });
+    }
+    if (e.target.id.includes('add-item-order-btn')) {
+      const [, itemId, orderId] = e.target.id.split('--');
+
+      const payload = {
+        orderId,
+        itemId,
+        uid: user.uid
+      };
+
+      createOrderItem(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateOrderItems(patchPayload).then(() => {
+          getOrderDetails(orderId).then((res) => orderDetails(res));
+        });
+      });
     }
 
     if (e.target.id.includes('order-edit')) {

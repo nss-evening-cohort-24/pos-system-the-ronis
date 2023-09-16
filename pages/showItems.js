@@ -1,14 +1,14 @@
 import renderToDOM from '../utils/renderToDom';
 import clearDom from '../utils/clearDom';
 
-const orderDetails = (array) => {
+const orderDetails = (res) => {
   clearDom();
   let domString = '';
-  if (array.length < 0) {
+  if (res.orderItems.length < 1) {
     domString = '<h1> No Items </h1>';
   } else {
     domString = '<div style="display:grid;"><h1>TOTAL: 0</h1>';
-    array.forEach((item) => {
+    res.orderItems.forEach((item) => {
       domString += `<div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">${item.name}</h5>
@@ -18,7 +18,7 @@ const orderDetails = (array) => {
       </div>
     </div>`;
     });
-    domString += '<div><button type="button" class="btn btn-success">ADD ITEM</button><button type="button" class="btn btn-primary">GO TO PAYMENT</button></div></div>';
+    domString += `<div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" class="btn btn-primary">GO TO PAYMENT</button></div></div>`;
   }
   renderToDOM('#orders', domString);
 };
