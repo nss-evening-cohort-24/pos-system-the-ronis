@@ -1,10 +1,10 @@
 import renderToDOM from '../utils/renderToDom';
 import clearDom from '../utils/clearDom';
 
-const orderDetails = (array) => {
+const orderDetails = (array, orderId) => {
   clearDom();
   let domString = '';
-  if (array.length < 0) {
+  if (array.length < 1) {
     domString = '<h1> No Items </h1>';
   } else {
     domString = '<div style="display:grid;"><h1>TOTAL: 0</h1>';
@@ -18,7 +18,7 @@ const orderDetails = (array) => {
       </div>
     </div>`;
     });
-    domString += '<div><button id="add-item-btn" type="button" class="btn btn-success">ADD ITEM</button><button type="button" class="btn btn-primary">GO TO PAYMENT</button></div></div>';
+    domString += `<div><button id="add-item-btn--${orderId}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" class="btn btn-primary">GO TO PAYMENT</button></div></div>`;
   }
   renderToDOM('#orders', domString);
 };

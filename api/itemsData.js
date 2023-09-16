@@ -8,9 +8,14 @@ const getItems = () => new Promise((resolve, reject) => {
     headers: {
       'get-content': 'application/json'
     }
-  })
-    .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+  }).then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 const createItems = (payload) => new Promise((resolve, reject) => {
@@ -50,20 +55,19 @@ const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
     .then((data) => resolve(data)) // will resolve a single object
     .catch(reject);
 });
-const itemsByPrice = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/items.json?orderBy="uid"&equalTo="${uid}"`, {
+const itemsByItemId = (itemId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/items.json?orderBy="itemId"&equalTo="${itemId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     },
   }).then((response) => response.json())
     .then((data) => {
-      const filteredItems = Object.values(data).filter((item) => item.price);
-      resolve(filteredItems);
+      resolve(data);
     })
     .catch(reject);
 });
 
 export {
-  getItems, createItems, updateItems, itemsByPrice, getSingleItem
+  getItems, createItems, updateItems, itemsByItemId, getSingleItem
 };

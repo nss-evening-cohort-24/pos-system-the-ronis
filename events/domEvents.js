@@ -2,9 +2,11 @@ import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
 import { getOrders, deleteOrders } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
-import showItems from '../pages/showItems';
 import { getItems } from '../api/itemsData';
-import addItemsToOrder from '../components/forms/createEditItemsForm';
+import addItemsToOrder from '../components/forms/addItems';
+import { createOrderItem, updateOrderItems } from '../api/orderItems';
+import orderDetails from '../pages/showItems';
+import { getOrderDetails } from '../api/mergedData';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -25,11 +27,37 @@ const domEvents = (user) => {
       addOrderForm();
     }
     if (e.target.id.includes('add-item-btn')) {
-      addItemsToOrder(user.uid);
+      const [, orderId] = e.target.id.split('--');
+      getItems().then((array) => {
+        addItemsToOrder(array, orderId);
+      });
     }
 
     if (e.target.id.includes('order-details')) {
-      getItems().then(showItems);
+      const [, firebaseKey] = e.target.id.split('--');
+      getItems().then((array) => {
+        orderDetails(array, firebaseKey);
+      });
+    }
+    if (e.target.id.includes('add-item-order-btn')) {
+      const [, itemId, orderId] = e.target.id.split('--');
+
+      const payload = {
+        orderId,
+        itemId,
+        uid: user.uid
+      };
+
+      createOrderItem(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateOrderItems(patchPayload).then(() => {
+          getOrderDetails(orderId).then((res) => orderDetails(res, user.uid));
+        });
+        // getOrderItems(orderId).then((array) => {
+        // console.warn(array);
+        // orderDetails(array);
+      });
     }
   });
 };
