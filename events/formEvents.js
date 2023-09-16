@@ -1,7 +1,7 @@
 import { createOrder, getOrders, updateOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
 
-const formEvents = (user) => {
+const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
     if (e.target.id.includes('submit-order')) {
@@ -9,15 +9,14 @@ const formEvents = (user) => {
         name: document.querySelector('#order-name').value,
         phone: document.querySelector('#customer-phone').value,
         email: document.querySelector('#customer-email').value,
-        orderType: document.querySelector('#order-type').value,
-        uid: user.uid,
+        ordertype: document.querySelector('#order-type').value,
       };
 
       createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
         updateOrder(patchPayload).then(() => {
-          getOrders(user.uid).then(showOrders);
+          getOrders().then(showOrders);
         });
       });
     }
@@ -28,13 +27,12 @@ const formEvents = (user) => {
         name: document.querySelector('#order-name').value,
         phone: document.querySelector('#customer-phone').value,
         email: document.querySelector('#customer-email').value,
-        orderType: document.querySelector('#order-type').value,
-        uid: user.uid,
+        ordertype: document.querySelector('#order-type').value,
         firebaseKey,
       };
 
       updateOrder(payload).then(() => {
-        getOrders(user.uid).then(showOrders);
+        getOrders().then(showOrders);
       });
     }
   });

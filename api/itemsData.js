@@ -68,6 +68,23 @@ const itemsByItemId = (itemId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/items/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
-  getItems, createItems, updateItems, itemsByItemId, getSingleItem
+  getItems,
+  createItems, 
+  updateItems, 
+  itemsByItemId, 
+  getSingleItem,
+  deleteItem,
 };

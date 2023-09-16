@@ -1,12 +1,13 @@
 import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
-import { getOrders, deleteOrders } from '../api/ordersData';
+import { getOrders, deleteOrders, getSingleOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
-import { getItems } from '../api/itemsData';
+import { getItems, deleteItem } from '../api/itemsData';
 import addItemsToOrder from '../components/forms/addItems';
 import { createOrderItem, updateOrderItems } from '../api/orderItems';
 import orderDetails from '../pages/showItems';
 import { getOrderDetails } from '../api/mergedData';
+import showItems from '../pages/showItems';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -55,6 +56,20 @@ const domEvents = (user) => {
           getOrderDetails(orderId).then((res) => orderDetails(res));
         });
       });
+    }
+
+    if (e.target.id.includes('order-edit')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleOrder(firebaseKey).then((orders) => addOrderForm(orders));
+    }
+
+    if (e.target.id.includes('item-delete')) {
+      if (window.confirm('Do you want to delete?')) {
+        const [, firebaseKey] = e.target.id.split('--');
+        deleteItem(firebaseKey).then(() => {
+          getItems().then(showItems);
+        });
+      }
     }
   });
 };
