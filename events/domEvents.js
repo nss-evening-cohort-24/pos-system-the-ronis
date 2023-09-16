@@ -35,8 +35,8 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('order-details')) {
       const [, firebaseKey] = e.target.id.split('--');
-      getItems().then((array) => {
-        orderDetails(array, firebaseKey);
+      getOrderDetails(firebaseKey).then((details) => {
+        orderDetails(details);
       });
     }
     if (e.target.id.includes('add-item-order-btn')) {
@@ -52,7 +52,7 @@ const domEvents = (user) => {
         const patchPayload = { firebaseKey: name };
 
         updateOrderItems(patchPayload).then(() => {
-          getOrderDetails(orderId).then((res) => orderDetails(res, user.uid));
+          getOrderDetails(orderId).then((res) => orderDetails(res));
         });
         // getOrderItems(orderId).then((array) => {
         // console.warn(array);
