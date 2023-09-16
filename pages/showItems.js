@@ -5,7 +5,7 @@ const orderDetails = (res) => {
   clearDom();
   let domString = '';
   if (res.orderItems.length < 1) {
-    domString = '<h1> No Items </h1>';
+    domString = `<div style="display:grid;"><h1> No Items </h1><div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" class="btn btn-primary">GO TO PAYMENT</button></div></div><div>`;
   } else {
     domString = '<div style="display:grid;"><h1>TOTAL: 0</h1>';
     res.orderItems.forEach((item) => {
