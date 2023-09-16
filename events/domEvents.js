@@ -54,9 +54,6 @@ const domEvents = (user) => {
         updateOrderItems(patchPayload).then(() => {
           getOrderDetails(orderId).then((res) => orderDetails(res));
         });
-        // getOrderItems(orderId).then((array) => {
-        // console.warn(array);
-        // orderDetails(array);
       });
     }
   });

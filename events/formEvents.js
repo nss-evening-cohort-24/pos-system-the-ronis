@@ -37,19 +37,6 @@ const formEvents = (user) => {
         getOrders(user.uid).then(showOrders);
       });
     }
-    // if (e.target.id.includes('add-item-form')) {
-    //   const [, itemId, orderId] = e.target.id.split('--');
-    //   const payload = {
-    //     orderId,
-    //     itemId,
-    //   };
-    // createOrderItem(payload).then(({ name }) => {
-    //   const patchPayload = { firebaseKey: name };
-
-    //   updateItems(patchPayload).then(() => {
-    //     getItems(user.uid).then(orderDetails);
-    //   });
-    // });
   });
 };
 
