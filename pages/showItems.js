@@ -18,7 +18,7 @@ const orderDetails = (res) => {
       </div>
     </div>`;
     });
-    domString += `<div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" class="btn btn-primary">GO TO PAYMENT</button></div></div>`;
+    domString += `<div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" id="payment-type-btn--${res.firebaseKey} class="btn btn-primary">GO TO PAYMENT</button></div></div>`;
   }
   renderToDOM('#orders', domString);
 };

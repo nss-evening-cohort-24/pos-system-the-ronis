@@ -8,7 +8,7 @@ const addItemsToOrder = (array, orderId) => {
   if (!array.length) {
     domString += '<h1 style="display:grid; color:white;">All Available Items Are Added To Order</h1>';
   } else {
-    domString += '<h3 style="display:grid;"</h3></hr>';
+    domString += '<h3 style="display:grid;">Menu Items</h3>';
     array.forEach((item) => {
       domString += `
       <div class="card" style="width: 18rem;">

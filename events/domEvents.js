@@ -7,6 +7,7 @@ import addItemsToOrder from '../components/forms/addItems';
 import { createOrderItem, updateOrderItems } from '../api/orderItems';
 import orderDetails from '../pages/showItems';
 import { getOrderDetails } from '../api/mergedData';
+import closeOrderForm from '../components/forms/closeOrderForm';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -61,7 +62,9 @@ const domEvents = (user) => {
       const [, firebaseKey] = e.target.id.split('--');
       getSingleOrder(firebaseKey).then((orders) => addOrderForm(orders));
     }
-
+    if (e.target.id.includes('payment-type-btn')) {
+      closeOrderForm();
+    }
     if (e.target.id.includes('item-delete')) {
       if (window.confirm('Do you want to delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
