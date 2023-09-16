@@ -2,9 +2,11 @@ import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
 import { getOrders, deleteOrders, getSingleOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
-import { getItems, deleteItem } from '../api/itemsData';
+import { getItems } from '../api/itemsData';
 import addItemsToOrder from '../components/forms/addItems';
-import { createOrderItem, updateOrderItems } from '../api/orderItems';
+import {
+  createOrderItem, deleteItemOrder, getSingleItemOrder, updateOrderItems
+} from '../api/orderItems';
 import orderDetails from '../pages/showItems';
 import { getOrderDetails } from '../api/mergedData';
 
@@ -63,12 +65,11 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('item-delete')) {
-      if (window.confirm('Do you want to delete?')) {
-        const [, firebaseKey] = e.target.id.split('--');
-        deleteItem(firebaseKey).then(() => {
-          getItems().then(orderDetails);
-        });
-      }
+      const [, itemId, orderId] = e.target.id.split('--');
+
+      getSingleItemOrder(itemId, orderId).then((orderItem) => deleteItemOrder(orderItem.firebaseKey)).then(() => {
+        getOrderDetails(orderId).then((res) => orderDetails(res));
+      });
     }
   });
 };
