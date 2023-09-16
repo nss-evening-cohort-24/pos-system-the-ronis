@@ -82,9 +82,9 @@ const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
 
 export {
   getItems,
-  createItems, 
-  updateItems, 
-  itemsByItemId, 
+  createItems,
+  updateItems,
+  itemsByItemId,
   getSingleItem,
   deleteItem,
 };
