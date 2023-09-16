@@ -7,7 +7,6 @@ import addItemsToOrder from '../components/forms/addItems';
 import { createOrderItem, updateOrderItems } from '../api/orderItems';
 import orderDetails from '../pages/showItems';
 import { getOrderDetails } from '../api/mergedData';
-import showItems from '../pages/showItems';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -67,7 +66,7 @@ const domEvents = (user) => {
       if (window.confirm('Do you want to delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
         deleteItem(firebaseKey).then(() => {
-          getItems().then(showItems);
+          getItems().then(orderDetails);
         });
       }
     }
