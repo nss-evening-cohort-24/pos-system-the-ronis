@@ -20,7 +20,7 @@ const addOrderForm = (obj = {}) => {
     <div class="form-group mb-3">
       <label for="orderType" class="form-label">Order Type</label>
       <select class="form-select" aria-label="orderType" id="order-type">
-        <option value="${obj.ordertype || ''}" selected disabled>${obj.ordertype || 'Select an Order Type'}</option>
+        <option value="${obj.ordertype || 'Select an Order Type'}" selected disabled>${obj.ordertype || 'Select an Order Type'}</option>
         <option value="walk-in">Walk-In</option>
         <option value="call-in">Call-In</option>
       </select>
