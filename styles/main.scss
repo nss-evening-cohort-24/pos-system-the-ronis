@@ -3,6 +3,7 @@
 
 
 body {
+  background-image: url("https://w0.peakpx.com/wallpaper/560/724/HD-wallpaper-tile-texture-gray.jpg");
   background-color: #282828;
   color: brown;
   text-align: center;
@@ -16,10 +17,28 @@ body {
 }
 .orderCards {
   justify-content: center;
+  align-items: center;
   max-width: 250px;
-  margin: 10px;
+  margin: 20px;
 }
-
+.cardStyle {
+  background-color: rgb(233, 223, 200);
+  border: 3px solid rgb(170, 151, 42);
+}
+#orders {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+  width: 70%;
+}
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
 #form-container {
   width: 60%;
   margin: 150px auto !important; 

@@ -1,12 +1,12 @@
 import clearDom from '../../utils/clearDom';
 import renderToDOM from '../../utils/renderToDom';
 
-const closeOrderForm = (orderId) => {
+const closeOrderForm = (orderId, total) => {
   clearDom();
   const domString = `
-  '<div style="display:grid;"><h1>Payments</h1>'
-  <form>
-    <select class="form-select" aria-label="Default select example">
+  <div style="display:grid;"><h1>Payments</h1>
+  <form id="close-order-btn--${orderId}--${total}">
+    <select class="form-select" id='payment-type' aria-label="Default select example">
     <option selected>Payment Type</option>
     <option value="cash">cash</option>
     <option value="check">check</option>
@@ -16,10 +16,11 @@ const closeOrderForm = (orderId) => {
   </select>
   <div class="mb-3">
     <label for="tip" class="form-label">Tip Amount</label>
-    <input type="number" class="form-control" id="tip" aria-describedby="tipHelp">
+    <input type="number" class="form-control" id="tip" aria-describedby="tipHelp" placeholder="$">
   </div>
-  <button type="submit" id='close-order-form-btn--${orderId}class="btn btn-primary">Close Order</button>
+  <div><button type="submit" id="close-order-btn--${orderId}--${total}" class="btn btn-success">Close Order</button>
+  </div>
  </form>`;
-  renderToDOM('#orders', domString);
+  renderToDOM('#form-container', domString);
 };
 export default closeOrderForm;
