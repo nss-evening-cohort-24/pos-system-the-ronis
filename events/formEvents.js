@@ -55,20 +55,8 @@ const formEvents = () => {
         ordertype: document.querySelector('#order-type').value,
         firebaseKey,
       };
-
-      updateOrder(payload).then(() => {
-        getOrders().then(showOrders);
-
-        createOrder(payload).then(({ name }) => {
-          const patchPayload = { firebaseKey: name };
-
-          updateOrder(patchPayload).then(() => {
-            getOrders().then(showOrders);
-          });
-        });
-      });
+      updateOrder(payload).then(() => getOrders().then(showOrders));
     }
   });
 };
-
 export default formEvents;
