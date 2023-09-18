@@ -43,8 +43,7 @@ const updateOrderItems = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET A SINGLE BOOK ORDER, SO THAT I CAN REMOVE THE BOOK FROM THE ORDER
-// REFERENCED IN DOMEVENTS.JS LINE 47
+// GET A SINGLE ITEM ORDER, SO THAT I CAN REMOVE THE ITEM FROM THE ORDER
 const getSingleItemOrder = async (itemId, orderId) => {
   const allOrderItems = await getOrderItems(orderId);
   const singleOrderItem = await allOrderItems.find((i) => i.itemId === itemId);
@@ -52,7 +51,7 @@ const getSingleItemOrder = async (itemId, orderId) => {
   return singleOrderItem;
 };
 
-// DELETE BASED ON FIREBASEKEY OF THE ORDER BOOK RELATIONSHIP
+// DELETE BASED ON FIREBASEKEY OF THE ORDER ITEM RELATIONSHIP
 const deleteItemOrder = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/orderItems/${firebaseKey}.json`, {
     method: 'DELETE',

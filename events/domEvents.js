@@ -9,6 +9,7 @@ import {
 } from '../api/orderItems';
 import orderDetails from '../pages/showItems';
 import { getOrderDetails } from '../api/mergedData';
+import closeOrderForm from '../components/forms/closeOrderForm';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -36,6 +37,7 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('order-details')) {
+      // orderID is being deconstructed
       const [, firebaseKey] = e.target.id.split('--');
       getOrderDetails(firebaseKey).then((details) => {
         orderDetails(details);
@@ -43,13 +45,13 @@ const domEvents = (user) => {
     }
     if (e.target.id.includes('add-item-order-btn')) {
       const [, itemId, orderId] = e.target.id.split('--');
-
+      // deconstructing and adding them to a new payload for our orderItems node
       const payload = {
         orderId,
         itemId,
         uid: user.uid
       };
-
+      // orderItems node created (a new item was added)
       createOrderItem(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
@@ -62,6 +64,11 @@ const domEvents = (user) => {
     if (e.target.id.includes('order-edit')) {
       const [, firebaseKey] = e.target.id.split('--');
       getSingleOrder(firebaseKey).then((orders) => addOrderForm(orders));
+    }
+
+    if (e.target.id.includes('payment-type-btn')) {
+      const [, orderId, total] = e.target.id.split('--');
+      closeOrderForm(orderId, total);
     }
 
     if (e.target.id.includes('item-delete')) {
