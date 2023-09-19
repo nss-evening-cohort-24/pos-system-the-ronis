@@ -26,7 +26,7 @@ This will stand the live server. Authenticate with your email - pizza picking pa
 - AUs can see a revenue page that includes a summary of the following: total revenue, total tips, total call ins, total walk ins, as well as the number of each payment types.
 
 ## LOOMS OF HHPW<!-- A loom link is sufficient -->
-*Click below to see HHPWPOS in action!*
+*Click below to see HHP+WPOS in action!*
 https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
 
 ## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
@@ -34,9 +34,14 @@ https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
 - [Wireframes](#https://www.figma.com/file/4y3EZddALuBR3ouSEM57Np/MVP?node-id=0%3A1)
 - [Project Board](#https://github.com/orgs/nss-evening-cohort-24/projects/9/views/1)
 - [Check out our technical flow!](#https://user-images.githubusercontent.com/111099613/267167644-5f3dc7a1-576e-4323-9791-c46e2c5ece6c.png)
+- [ERD? Sounds good to me!](#https://user-images.githubusercontent.com/97858910/266849569-ca8b3488-c77c-4248-9c43-0f2b08b2fef5.png)
 
 ## Code Snippet <!-- OPTIONAL, but doesn't hurt -->
-PLACE CODE SNIPPET HERE
+Look, ma, I can use array methods! - REDUCE
+```
+  const total = res.orderItems.reduce((acc, curr) => acc + curr.price, 0);
+```
+
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
 <img width="auto" alt="Your Alt" src="your-link.png">
