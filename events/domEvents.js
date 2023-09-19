@@ -4,6 +4,7 @@ import { getOrders, deleteOrders, getSingleOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
 import { getItems, deleteItem } from '../api/itemsData';
 import showItems from '../pages/showItems';
+import revenue from '../pages/revenue';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -26,6 +27,10 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('order-details')) {
       getItems().then(showItems);
+    }
+
+    if (e.target.id.includes('home-view-revenue-btn')) {
+      revenue();
     }
 
     if (e.target.id.includes('order-edit')) {
