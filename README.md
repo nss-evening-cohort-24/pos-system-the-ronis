@@ -25,13 +25,15 @@ This will stand the live server. Authenticate with your email - pizza picking pa
 - AUs can choose from a list of pre-determined items on a menu to add to orders.
 - AUs can see a revenue page that includes a summary of the following: total revenue, total tips, total call ins, total walk ins, as well as the number of each payment types.
 
-## Video Walkthrough of APP NAME <!-- A loom link is sufficient -->
+## LOOMS OF HHPW<!-- A loom link is sufficient -->
+*Click below to see HHPWPOS in action!*
 https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
 
 ## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
 - [Check out the deployed site](#https://hiphoppizzaandwangspos.netlify.app/)
-- [Wireframes](#your-link)
+- [Wireframes](#https://www.figma.com/file/4y3EZddALuBR3ouSEM57Np/MVP?node-id=0%3A1)
 - [Project Board](#https://github.com/orgs/nss-evening-cohort-24/projects/9/views/1)
+- [Check out our technical flow!](#https://user-images.githubusercontent.com/111099613/267167644-5f3dc7a1-576e-4323-9791-c46e2c5ece6c.png)
 
 ## Code Snippet <!-- OPTIONAL, but doesn't hurt -->
 PLACE CODE SNIPPET HERE
