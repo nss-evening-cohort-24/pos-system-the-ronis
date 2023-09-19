@@ -1,47 +1,37 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/liKnqtLP)
-<div style="text-align:center">
-<h1>Hip Hop, Pizza, and Wangs (HHP+W)</h1>
+# HIP HOP PIZZA AND WANGS [![Netlify Status](https://api.netlify.com/api/v1/badges/4ab7e730-7ed3-4cfd-a988-66195e79a991/deploy-status)](https://app.netlify.com/sites/drt-sortinghat/deploys)
+<!-- update the netlify badge above with your own badge that you can find at netlify under settings/general#status-badges -->
 
-<image src="https://user-images.githubusercontent.com/29741570/205346767-a182560c-64a6-4cfa-80b3-0d64cf998242.png" style="height:300px;"></image></div>
+Do you like pizza? Do you like wings? Do you like Hip-Hop? Why have one when you can have all three! Hip Hop Pizza and Wangs is your one stop shop for it all! You have your pizza, you have your wings, but how do you pay for it all? No fear! Our point of sales system is here. 
 
-## Get Started
-**READ ALL INSTRUCTIONS BEFORE BEGINNING THIS PROJECT.** Take notes as you read.
+[View App](#your-link)
 
-Everything that needs to be done before coding starts.
+## Get Started <!-- OPTIONAL, but doesn't hurt -->
+First, clone this repo. In your terminal, enter the following:
 
-* **ERD** - Create an ERD to show the relationships between all of  your data
-* **Postman Collection** - Create a postman collection to store and test out all of your API calls.
-* **[Wireframes](https://www.figma.com/file/4y3EZddALuBR3ouSEM57Np/MVP?node-id=0%3A1)** - This is the basic MVP wireframe. You can choose to style how you wish.
-* **Flowchart** - Plan out the flow of your data through the application
-* **Github Issue Tickets** - Using the Project Instructions as a guide, create issue tickets for this project’s work.
-* **Github Milestones** - Separate those issue tickets into Milestones to plan out the work.
+```
+npm start
+```
+This will stand the live server. Authenticate with your email - pizza picking paradise awaits.
 
-## Definition of Done
+## About the User <!-- This is a scaled down user persona -->
+- We were comissioned by the high lords of hip hop - the owners of HHPW - to create this application. Ideally, employees of this fine establishment authenticate through FireBase Oauth, and utilize this system to create/edit incoming orders, add items to said orders, close orders, and catch a peek at the current revenue of a set date range. Payment types and tips are all accounted for.
 
-Do not submit this project until all of the following are complete:
+## Features <!-- List your app features using bullets! Do NOT use a paragraph. No one will read that! -->
+- A CRUD per
 
-1. All items are completed in getting started
-1. MVP, defined by the Acceptance Criteria, has been completed
-1. The title of your application is visible in the browser tab
-1. The project has been deployed
-1. Loom video has been created
-1. `README.md` has been updated
+## Video Walkthrough of APP NAME <!-- A loom link is sufficient -->
+https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
 
-## Requirements
+## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
+- [Check out the deployed site](#your-link)
+- [Wireframes](#your-link)
+- [Project Board](#your-link)
 
-Things to remember while coding out the project
+## Code Snippet <!-- OPTIONAL, but doesn't hurt -->
+PLACE CODE SNIPPET HERE
 
-* Clean code - single responsibility principle
-* ES6 Modules bundled with webpack
-* No errors - linters should be clean
-* Bootstrap for styling
-* Completely planned out - before each section you should be making new cards on your Github project board before you code
-* Wireframes are provided for you for MVP
-* You should have an ERD
+## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
+<img width="1148" alt="Your Alt" src="your-link.png">
 
-### Instructions
-
-* [MVP Definition - It Gets the Job Done](./instructions/mvp.md)
-* [Stretch Goals 1 - Filtering the Data](./instructions/stretch-1.md)
-* [Stretch Goals 2 - Dealing with Change](./instructions/stretch-2.md)
-* [Stretch Goals 3 - Play that Funky Music](./instructions/stretch-3.md)
+## Contributors
+- [YOUR NAME](https://github.com/your-github-url)
