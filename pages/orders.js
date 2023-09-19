@@ -23,9 +23,10 @@ const showOrders = (array) => {
                 <p class="card-text bold">${item.email}</p>
                 <p class="card-text bold">${item.ordertype}</p>
                 <a href="#" id='order-details--${item.firebaseKey}' class="card-link">Details</a>
-                <a href="#" id='order-edit--${item.firebaseKey}' class="card-link">Edit</a>
-                <a href="#" id='order-delete--${item.firebaseKey}' class="card-link">Delete</a>
-                </div>
+                  ${item.status ? ''
+    : `<a href="#" id='order-edit--${item.firebaseKey}' class="card-link">Edit</a>
+                  <a href="#" i id='order-delete--${item.firebaseKey}' class="fa-solid fa-trash-can" /></a>`}
+            </div>
           </div>
         </div>
         `;
