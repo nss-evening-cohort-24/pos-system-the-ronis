@@ -69,7 +69,6 @@ const formEvents = () => {
         firebaseKey,
       };
       updateOrder(payload).then(() => getOrders().then(showOrders));
-
     }
   });
 };
