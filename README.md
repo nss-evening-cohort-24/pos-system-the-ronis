@@ -1,47 +1,52 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/liKnqtLP)
-<div style="text-align:center">
-<h1>Hip Hop, Pizza, and Wangs (HHP+W)</h1>
+# HIP HOP PIZZA AND WANGS [![Netlify Status](https://api.netlify.com/api/v1/badges/0a1d8099-ac63-4f29-84f0-c4f2225482e8/deploy-status)](https://app.netlify.com/sites/hiphoppizzaandwangspos/deploys)
+<!-- update the netlify badge above with your own badge that you can find at netlify under settings/general#status-badges -->
 
-<image src="https://user-images.githubusercontent.com/29741570/205346767-a182560c-64a6-4cfa-80b3-0d64cf998242.png" style="height:300px;"></image></div>
+Do you like pizza? Do you like wings? Do you like Hip-Hop? Why have one when you can have all three! Hip Hop Pizza and Wangs is your one stop shop for it all! You have your pizza, you have your wings, but how do you pay for it all? No fear! Our point of sales system is here. 
 
-## Get Started
-**READ ALL INSTRUCTIONS BEFORE BEGINNING THIS PROJECT.** Take notes as you read.
+[View App](#https://hiphoppizzaandwangspos.netlify.app/)
 
-Everything that needs to be done before coding starts.
+## Get Started <!-- OPTIONAL, but doesn't hurt -->
+First, clone this repo. Pick your favorite text editor. In your terminal, enter the following:
 
-* **ERD** - Create an ERD to show the relationships between all of  your data
-* **Postman Collection** - Create a postman collection to store and test out all of your API calls.
-* **[Wireframes](https://www.figma.com/file/4y3EZddALuBR3ouSEM57Np/MVP?node-id=0%3A1)** - This is the basic MVP wireframe. You can choose to style how you wish.
-* **Flowchart** - Plan out the flow of your data through the application
-* **Github Issue Tickets** - Using the Project Instructions as a guide, create issue tickets for this project’s work.
-* **Github Milestones** - Separate those issue tickets into Milestones to plan out the work.
+```
+npm start
+```
+This will stand the live server. Authenticate with your email - pizza picking paradise awaits.
 
-## Definition of Done
+## About the User <!-- This is a scaled down user persona -->
+- We were comissioned by the high lords of hip hop - the owners of HHPW - to create this application. Ideally, employees of this fine establishment authenticate through FireBase Oauth, and utilize this system to create/edit incoming orders, add items to said orders, close orders, and catch a peek at the current revenue of a set date range. Payment types and tips are all accounted for.
 
-Do not submit this project until all of the following are complete:
+## Features <!-- List your app features using bullets! Do NOT use a paragraph. No one will read that! -->
+- A CRUD application featuring persistent storage within a FireBase DB. 
+- Authenticated users can log in and CREATE orders.
+- Authenticated users can READ created orders as well as items associated with them.
+- Authenticated users can UPDATE orders. 
+- Authenticated users (AUs) can DELETE orders as well as items associated with orders.
+- AUs can choose from a list of pre-determined items on a menu to add to orders.
+- AUs can see a revenue page that includes a summary of the following: total revenue, total tips, total call ins, total walk ins, as well as the number of each payment types.
 
-1. All items are completed in getting started
-1. MVP, defined by the Acceptance Criteria, has been completed
-1. The title of your application is visible in the browser tab
-1. The project has been deployed
-1. Loom video has been created
-1. `README.md` has been updated
+## LOOMS OF HHPW<!-- A loom link is sufficient -->
+*Click below to see HHP+WPOS in action!*
+https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
 
-## Requirements
+## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
+- [Check out the deployed site](#https://hiphoppizzaandwangspos.netlify.app/)
+- [Wireframes](#https://www.figma.com/file/4y3EZddALuBR3ouSEM57Np/MVP?node-id=0%3A1)
+- [Project Board](#https://github.com/orgs/nss-evening-cohort-24/projects/9/views/1)
+- [Check out our technical flow!](#https://user-images.githubusercontent.com/111099613/267167644-5f3dc7a1-576e-4323-9791-c46e2c5ece6c.png)
+- [ERD? Sounds good to me!](#https://user-images.githubusercontent.com/97858910/266849569-ca8b3488-c77c-4248-9c43-0f2b08b2fef5.png)
 
-Things to remember while coding out the project
+## Code Snippet <!-- OPTIONAL, but doesn't hurt -->
+Look, ma, I can use array methods! - REDUCE
+```
+  const total = res.orderItems.reduce((acc, curr) => acc + curr.price, 0);
+```
 
-* Clean code - single responsibility principle
-* ES6 Modules bundled with webpack
-* No errors - linters should be clean
-* Bootstrap for styling
-* Completely planned out - before each section you should be making new cards on your Github project board before you code
-* Wireframes are provided for you for MVP
-* You should have an ERD
 
-### Instructions
+## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
+<img width="auto" alt="Your Alt" src="your-link.png">
 
-* [MVP Definition - It Gets the Job Done](./instructions/mvp.md)
-* [Stretch Goals 1 - Filtering the Data](./instructions/stretch-1.md)
-* [Stretch Goals 2 - Dealing with Change](./instructions/stretch-2.md)
-* [Stretch Goals 3 - Play that Funky Music](./instructions/stretch-3.md)
+## Contributors
+- [Shari Ebach](https://github.com/GitEbachS)
+- [Ryan Shore](https://github.com/mshorecode)
+- [Keana Cobarde](https://github.com/keanacobarde)
