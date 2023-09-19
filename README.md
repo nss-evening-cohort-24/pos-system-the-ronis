@@ -37,7 +37,9 @@ https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
 PLACE CODE SNIPPET HERE
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
-<img width="1148" alt="Your Alt" src="your-link.png">
+<img width="auto" alt="Your Alt" src="your-link.png">
 
 ## Contributors
-- [YOUR NAME](https://github.com/your-github-url)
+- [Shari Ebach](https://github.com/GitEbachS)
+- [Ryan Shore](https://github.com/mshorecode)
+- [Keana Cobarde](https://github.com/keanacobarde)
