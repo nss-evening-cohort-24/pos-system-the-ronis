@@ -68,9 +68,9 @@ const getSingleOrder = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
+  getSingleOrder,
   getOrders,
   createOrder,
   updateOrder,
   deleteOrders,
-  getSingleOrder,
 };
