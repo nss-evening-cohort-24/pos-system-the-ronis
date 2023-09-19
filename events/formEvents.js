@@ -25,34 +25,24 @@ const formEvents = () => {
     }
 
     if (e.target.id.includes('close-order-btn')) {
-      const [, orderId, total] = e.target.id.split('--');
+      const [, firebaseKey, total] = e.target.id.split('--');
       const date = (new Date()).toLocaleString('en-US');
-      getSingleOrder(orderId).then((res) => {
+      getSingleOrder(firebaseKey).then((res) => {
         const payload = {
-          orderId,
+          orderId: firebaseKey,
           total,
           date: date.toString(),
           paymenttype: document.querySelector('#payment-type').value,
           tip: document.querySelector('#tip').value,
           ordertype: res.ordertype
         };
-        createRevenue(payload).then(({ name }) => {
-          const patchPayload = { firebaseKey: name };
+        const payloadClosed = { firebaseKey, status: true };
+        updateOrder(payloadClosed).then(() => {
+          createRevenue(payload).then(({ name }) => {
+            const patchPayload = { firebaseKey: name };
 
-          updateRevenue(patchPayload).then(() => {
-            getSingleOrder(orderId).then((firebaseKey) => {
-              // eslint-disable-next-line no-shadow
-              const patchPayload = {
-                name: res.name,
-                phone: res.phone,
-                email: res.email,
-                ordertype: res.ordertype,
-                status: false,
-                firebaseKey
-              };
-              updateOrder(patchPayload).then(() => {
-                getOrders().then((array) => showOrders(array));
-              });
+            updateRevenue(patchPayload).then(() => {
+              getOrders().then(showOrders);
             });
           });
         });
