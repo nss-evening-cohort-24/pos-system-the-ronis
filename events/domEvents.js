@@ -10,6 +10,8 @@ import {
 import orderDetails from '../pages/showItems';
 import { getOrderDetails } from '../api/mergedData';
 import closeOrderForm from '../components/forms/closeOrderForm';
+import { getRevenue } from '../api/revenueData';
+import revenue from '../pages/revenue';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -43,6 +45,7 @@ const domEvents = (user) => {
         orderDetails(details);
       });
     }
+
     if (e.target.id.includes('add-item-order-btn')) {
       const [, itemId, orderId] = e.target.id.split('--');
       // deconstructing and adding them to a new payload for our orderItems node
@@ -61,6 +64,9 @@ const domEvents = (user) => {
       });
     }
 
+    if (e.target.id.includes('home-view-revenue-btn')) {
+      getRevenue().then(revenue);
+    }
     if (e.target.id.includes('order-edit')) {
       const [, firebaseKey] = e.target.id.split('--');
       getSingleOrder(firebaseKey).then((orders) => addOrderForm(orders));
