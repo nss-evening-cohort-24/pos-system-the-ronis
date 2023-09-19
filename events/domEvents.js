@@ -10,6 +10,7 @@ import {
 import orderDetails from '../pages/showItems';
 import { getOrderDetails } from '../api/mergedData';
 import closeOrderForm from '../components/forms/closeOrderForm';
+import { getRevenue } from '../api/revenueData';
 import revenue from '../pages/revenue';
 
 const domEvents = (user) => {
@@ -64,7 +65,7 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('home-view-revenue-btn')) {
-      revenue();
+      getRevenue().then(revenue);
     }
     if (e.target.id.includes('order-edit')) {
       const [, firebaseKey] = e.target.id.split('--');

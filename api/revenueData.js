@@ -6,7 +6,7 @@ const getRevenue = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/revenue.json`, {
     method: 'GET',
     headers: {
-      'get-content': 'application/json'
+      'Content-Type': 'application/json'
     }
   }).then((response) => response.json())
     .then((data) => {

@@ -9,8 +9,6 @@ const closeOrderForm = (orderId, total) => {
     <select class="form-select" id='payment-type' aria-label="Default select example">
     <option selected>Payment Type</option>
     <option value="cash">cash</option>
-    <option value="check">check</option>
-    <option value="debit">debit</option>
     <option value="credit">credit</option>
     <option value="mobile">mobile</option>
   </select>
