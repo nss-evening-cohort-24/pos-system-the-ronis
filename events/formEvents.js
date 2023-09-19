@@ -40,7 +40,20 @@ const formEvents = () => {
           const patchPayload = { firebaseKey: name };
 
           updateRevenue(patchPayload).then(() => {
-            getOrders().then(showOrders);
+            getSingleOrder(orderId).then((firebaseKey) => {
+              // eslint-disable-next-line no-shadow
+              const patchPayload = {
+                name: res.name,
+                phone: res.phone,
+                email: res.email,
+                ordertype: res.ordertype,
+                status: false,
+                firebaseKey
+              };
+              updateOrder(patchPayload).then(() => {
+                getOrders().then((array) => showOrders(array));
+              });
+            });
           });
         });
       });
@@ -56,6 +69,7 @@ const formEvents = () => {
         firebaseKey,
       };
       updateOrder(payload).then(() => getOrders().then(showOrders));
+
     }
   });
 };

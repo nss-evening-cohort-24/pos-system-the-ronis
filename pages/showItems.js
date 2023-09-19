@@ -15,7 +15,7 @@ const orderDetails = (res) => {
         <h5 class="card-title">${item.name}</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">$${item.price}</h6>
         <a href="#" class="card-link" id="item-edit--${item.firebaseKey}">Edit Item</a>
-        <a href="#" class="card-link" id="item-delete--${item.firebaseKey}--${res.firebaseKey}">Delete Item</a>
+        <a href="#" i id='item-delete--${item.firebaseKey}--${res.firebaseKey}' class="fa-solid fa-trash-can" /></a>
       </div>
     </div>`;
     });
