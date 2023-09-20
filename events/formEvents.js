@@ -13,6 +13,7 @@ const formEvents = () => {
         phone: document.querySelector('#customer-phone').value,
         email: document.querySelector('#customer-email').value,
         ordertype: document.querySelector('#order-type').value,
+        status: false,
       };
 
       createOrder(payload).then(({ name }) => {
@@ -25,12 +26,12 @@ const formEvents = () => {
     }
 
     if (e.target.id.includes('close-order-btn')) {
-      const [, firebaseKey, total] = e.target.id.split('--');
+      const [, firebaseKey, subTotal] = e.target.id.split('--');
       const date = (new Date()).toLocaleString('en-US');
       getSingleOrder(firebaseKey).then((res) => {
         const payload = {
           orderId: firebaseKey,
-          total,
+          total: Number(subTotal) + Number(document.querySelector('#tip').value),
           date: date.toString(),
           paymenttype: document.querySelector('#payment-type').value,
           tip: document.querySelector('#tip').value,

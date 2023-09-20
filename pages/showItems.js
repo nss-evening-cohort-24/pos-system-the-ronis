@@ -14,12 +14,13 @@ const orderDetails = (res) => {
       <div class="card-body">
         <h5 class="card-title">${item.name}</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">$${item.price}</h6>
-        <a href="#" class="card-link" id="item-edit--${item.firebaseKey}">Edit Item</a>
-        <a href="#" i id='item-delete--${item.firebaseKey}--${res.firebaseKey}' class="fa-solid fa-trash-can" /></a>
+        ${res.status ? '' : `
+          <a href="#" id='item-edit--${item.firebaseKey}' class="card-link">Edit</a>
+          <a href="#" i id='item-delete--${item.firebaseKey}' class="fa-solid fa-trash-can" /></a>`}
       </div>
     </div>`;
     });
-    domString += `<div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" id="payment-type-btn--${res.firebaseKey}--${total}" class="btn btn-primary">GO TO PAYMENT</button></div></div>`;
+    domString += `${res.status ? '' : `<div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" id="payment-type-btn--${res.firebaseKey}--${total}" class="btn btn-primary">GO TO PAYMENT</button></div></div>`}`;
   }
 
   renderToDOM('#orders', domString);
