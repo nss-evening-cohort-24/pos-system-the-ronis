@@ -3,14 +3,16 @@ import renderToDOM from '../utils/renderToDom';
 
 const revenue = (res) => {
   clearDom();
-  const total = res.reduce((acc, curr) => Number(acc) + Number(curr.total), 0);
-  const tipTotal = res.reduce((acc, curr) => Number(acc) + Number(curr.tip), 0);
-  const totalRevenue = total + tipTotal;
+  let total = 0;
+  let tipTotal = 0;
   let callInOrders = 0;
   let walkInOrders = 0;
   let cash = 0;
   let credit = 0;
   let mobile = 0;
+
+  total += res.reduce((acc, curr) => Number(acc) + Number(curr.total), total);
+  tipTotal += res.reduce((acc, curr) => Number(acc) + Number(curr.tip), tipTotal);
 
   res.forEach((type) => {
     if (type.ordertype === 'walk-in') {
@@ -34,7 +36,7 @@ const revenue = (res) => {
   <div id="revenue">
     <h1>REVENUE</h1>
     <br><br>
-    <h1>TOTAL REVENUE: $${totalRevenue}</h1>
+    <h1>TOTAL REVENUE: $${total}</h1>
     <br><br>
     <h5>TOTAL TIPS: $${tipTotal}</h5>
     <h5>TOTAL CALL IN ORDERS: ${callInOrders}</h5>
