@@ -1,6 +1,6 @@
 import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
-import { getOrders, deleteOrders, getSingleOrder } from '../api/ordersData';
+import { getOrders, getSingleOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
 import { getItems } from '../api/itemsData';
 import addItemsToOrder from '../components/forms/addItems';
@@ -8,7 +8,7 @@ import {
   createOrderItem, deleteItemOrder, getSingleItemOrder, updateOrderItems
 } from '../api/orderItems';
 import orderDetails from '../pages/showItems';
-import { getOrderDetails } from '../api/mergedData';
+import { deleteItemOrderRelationship, getOrderDetails } from '../api/mergedData';
 import closeOrderForm from '../components/forms/closeOrderForm';
 import { getRevenue } from '../api/revenueData';
 import revenue from '../pages/revenue';
@@ -22,7 +22,7 @@ const domEvents = (user) => {
     if (e.target.id.includes('order-delete')) {
       if (window.confirm('Do you want to delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
-        deleteOrders(firebaseKey).then(() => {
+        deleteItemOrderRelationship(firebaseKey).then(() => {
           getOrders(user).then((array) => showOrders(array));
         });
       }
