@@ -2,8 +2,7 @@ import addOrderForm from '../components/forms/addOrderForm';
 /* eslint-disable no-alert */
 import { getOrders, getSingleOrder } from '../api/ordersData';
 import { showOrders } from '../pages/orders';
-import { getItems } from '../api/itemsData';
-import addItemsToOrder from '../components/forms/addItems';
+import { deleteItem, getItems, getSingleItem } from '../api/itemsData';
 import {
   createOrderItem, deleteItemOrder, getSingleItemOrder, updateOrderItems
 } from '../api/orderItems';
@@ -12,6 +11,8 @@ import { deleteItemOrderRelationship, getOrderDetails } from '../api/mergedData'
 import closeOrderForm from '../components/forms/closeOrderForm';
 import { getRevenue } from '../api/revenueData';
 import revenue from '../pages/revenue';
+import updateItemForm from '../components/forms/updateItemForm';
+import menuItems from '../pages/addItems';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -34,7 +35,7 @@ const domEvents = (user) => {
     if (e.target.id.includes('add-item-btn')) {
       const [, orderId] = e.target.id.split('--');
       getItems().then((array) => {
-        addItemsToOrder(array, orderId);
+        menuItems(array, orderId);
       });
     }
 
@@ -76,10 +77,23 @@ const domEvents = (user) => {
       const [, orderId, total] = e.target.id.split('--');
       closeOrderForm(orderId, total);
     }
-
+    if (e.target.id.includes('create-item-admin-btn')) {
+      updateItemForm();
+    }
+    if (e.target.id.includes('item-edit-admin')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleItem(firebaseKey).then((itemObj) => updateItemForm(itemObj));
+    }
+    if (e.target.id.includes('item-erase-admin')) {
+      if (window.confirm('Do you want to delete?')) {
+        const [, firebaseKey] = e.target.id.split('--');
+        deleteItem(firebaseKey).then(() => {
+          getItems().then((array) => menuItems(array));
+        });
+      }
+    }
     if (e.target.id.includes('item-delete')) {
       const [, itemId, orderId] = e.target.id.split('--');
-
       getSingleItemOrder(itemId, orderId).then((orderItem) => deleteItemOrder(orderItem.firebaseKey)).then(() => {
         getOrderDetails(orderId).then((res) => orderDetails(res));
       });
