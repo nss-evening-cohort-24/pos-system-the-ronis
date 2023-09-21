@@ -7,7 +7,7 @@ const orderDetails = (res) => {
   if (res.orderItems.length < 1) {
     domString = `<div style="display:grid;"><h1> No Items </h1><div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button></div><div>`;
   } else {
-    const total = res.orderItems.reduce((acc, curr) => acc + curr.price, 0);
+    const total = res.orderItems.reduce((acc, curr) => Number(acc) + Number(curr.price), 0);
     domString = `<div style="display:grid;"><h1>TOTAL: $${res.orderItems.reduce((acc, curr) => acc + curr.price, 0)} </h1>`;
     res.orderItems.forEach((item) => {
       domString += `<div class="card" style="width: 18rem;">
@@ -16,7 +16,7 @@ const orderDetails = (res) => {
         <h6 class="card-subtitle mb-2 text-body-secondary">$${item.price}</h6>
         ${res.status ? '' : `
           <a href="#" id='item-edit--${item.firebaseKey}' class="card-link">Edit</a>
-          <a href="#" i id='item-delete--${item.firebaseKey}' class="fa-solid fa-trash-can" /></a>`}
+          <a href="#" i id='item-delete--${item.firebaseKey}--${res.firebaseKey}' class="fa-solid fa-trash-can" /></a>`}
       </div>
     </div>`;
     });

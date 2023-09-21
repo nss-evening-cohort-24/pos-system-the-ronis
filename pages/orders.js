@@ -20,7 +20,7 @@ const showOrders = (array) => {
               <h5 class="card-title">${item.name}</h5>
                 <p class="card-text bold">${item.status ? 'closed' : 'open'}</p>
                 <p class="card-text bold">${item.phone}</p>
-                <p class="card-text bold">${item.email}</p>
+                <p class="card-text emailSmall bold">${item.email}</p>
                 <p class="card-text bold">${item.ordertype}</p>
                 <a href="#" id='order-details--${item.firebaseKey}' class="card-link">Details</a>
                   ${item.status ? ''
