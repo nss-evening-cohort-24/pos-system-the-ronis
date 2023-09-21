@@ -3,10 +3,11 @@
 
 
 body {
-  background-color: #282828;
-  color: brown;
+  background-color: #212121;
+  color: #ffffff;
   text-align: center;
   margin-top: 100px;
+  box-sizing: border-box;
 }
 #orders {
   display: flex;
@@ -42,6 +43,98 @@ body {
   justify-content: center;
   margin-top: 10px;
 }
+
+// Event Cards
+#event-cards {
+  text-align: left;
+  max-width: 70%;
+  line-height: 1.4;
+  margin: 2.5em auto;
+  padding: 0 2%;
+
+  #eventCard {
+    display: flex;
+    align-items: center;
+    padding: 0 0 1.5rem;
+    background-color: transparent;
+    border-bottom: 2px solid #333;
+    margin-top: 1.5em;
+
+    .event-img {
+      height: 180px;
+      max-width: auto;
+
+      img {
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain !important;
+      }
+      
+    }
+
+    .event-text {
+      display: flex;
+      flex-direction: column;
+      margin-left: 2em;
+      text-transform: uppercase;
+      font-size: 1em;
+
+      .event-name {
+        line-height: 1.25;
+        font-size: 2em;
+        font-weight: 800;
+        display: inline-block;
+      }
+
+      .description-text {
+        font-size: 1em;
+        line-height: 1.2;
+        margin: 6px 0;
+        font-style: italic;
+        font-weight: 600;
+      }
+
+      .date-text {
+        margin-top: 50px;
+        font-weight: 800;
+        font-size: 1.125em;
+      }
+    }
+  }
+}
+
+
+// Event Form 
+.event-grid-container {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 50%;
+  margin: auto;
+  text-align: left !important;
+
+  .gridForm-1, .gridForm-4, .gridForm-5 {
+    grid-column: span 3 / auto;
+  }
+  
+  .gridForm-2 {
+    grid-column: span 2 / auto;
+  }
+  
+  .gridForm-3 {
+    grid-column: span 1 / auto;
+  }
+  
+  .gridButton {
+    font-weight: 700 !important;
+    grid-column: 2 / 3;
+    max-width: 100%;
+  }
+}
+
+
+
+
 #form-container {
   width: 60%;
   margin: 150px auto !important; 

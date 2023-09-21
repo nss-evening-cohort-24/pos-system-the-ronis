@@ -1,12 +1,15 @@
+import { createEvent, getEvents, updateEvent } from '../api/eventsData';
 import {
   createOrder, getOrders, getSingleOrder, updateOrder
 } from '../api/ordersData';
 import { createRevenue, updateRevenue } from '../api/revenueData';
+import { liveEvents } from '../pages/liveEvents';
 import { showOrders } from '../pages/orders';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
+
     if (e.target.id.includes('submit-order')) {
       const payload = {
         name: document.querySelector('#order-name').value,
@@ -21,6 +24,24 @@ const formEvents = () => {
 
         updateOrder(patchPayload).then(() => {
           getOrders().then(showOrders);
+        });
+      });
+    }
+
+    if (e.target.id.includes('submit-event')) {
+      const payload = {
+        eventName: document.querySelector('#event-name').value,
+        eventDate: document.querySelector('#event-date').value,
+        eventTime: document.querySelector('#event-time').value,
+        eventDescription: document.querySelector('#event-description').value,
+        eventImage: document.querySelector('#event-image').value,
+      };
+
+      createEvent(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateEvent(patchPayload).then(() => {
+          getEvents().then(liveEvents);
         });
       });
     }

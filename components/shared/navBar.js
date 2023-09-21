@@ -14,6 +14,9 @@ const navBar = () => {
         <li class="nav-item">
           <a class="nav-link" href="#" id="create-order">Create an Order</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="live-events-page">Events</a>
+        </li>
       </ul>
       <div class="me-sm-2" id="search">
         <input class="form-control mr-sm-2" id="search" placeholder="Search Orders" aria-label="Search">

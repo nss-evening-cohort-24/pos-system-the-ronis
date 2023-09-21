@@ -12,6 +12,7 @@ import { deleteItemOrderRelationship, getOrderDetails } from '../api/mergedData'
 import closeOrderForm from '../components/forms/closeOrderForm';
 import { getRevenue } from '../api/revenueData';
 import revenue from '../pages/revenue';
+import addLiveEventForm from '../components/forms/addLiveEventForm';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -75,6 +76,10 @@ const domEvents = (user) => {
     if (e.target.id.includes('payment-type-btn')) {
       const [, orderId, total] = e.target.id.split('--');
       closeOrderForm(orderId, total);
+    }
+
+    if (e.target.id.includes('add-event-btn')) {
+      addLiveEventForm();
     }
 
     if (e.target.id.includes('item-delete')) {
