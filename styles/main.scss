@@ -9,12 +9,6 @@ body {
   margin-top: 100px;
   box-sizing: border-box;
 }
-#orders {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 50px auto;
-}
 .orderCards {
   justify-content: center;
   align-items: center;
@@ -22,17 +16,24 @@ body {
   margin: 20px;
 }
 .cardStyle {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   background-color: rgb(247, 246, 244);
   border: 2px solid rgb(52, 155, 39);
+}
+.emailSmall {
+  font-size: 14px;
 }
 #orders {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 50px;
+  margin: 50px auto;
   width: 70%;
 }
+
 .btn-hide {
   display: flex;
   flex-wrap: wrap;
@@ -154,9 +155,6 @@ body {
   }
 }
 
-
-
-
 #form-container {
   width: 60%;
   margin: 150px auto !important; 
@@ -177,4 +175,31 @@ body {
 }
 .itemNameTitle {
   color: white;
+}
+.cards {
+  display: grid;
+  margin: 30px auto;
+  grid-template-columns: repeat(3, 1fr);
+  // grid-template-rows: repeat(auto-fill, 200px);
+  grid-gap: 1rem;
+}
+
+.itemCard {
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
+  padding: .5rem;
+}
+.card-img-top {
+  width: 100px;
+}
+.colorPrice {
+  background-color: rgb(243, 198, 84);
+  width: 13%;
+  margin: auto;
+  font-weight: 700;
+  font-style: italic;
+}
+#create-item-admin-btn {
+  margin-bottom: 5px;
+  margin-right: 10px;
 }

@@ -1,9 +1,11 @@
 import { createEvent, getEvents, updateEvent } from '../api/eventsData';
+import { createItems, getItems, updateItems } from '../api/itemsData';
 import {
   createOrder, getOrders, getSingleOrder, updateOrder
 } from '../api/ordersData';
 import { createRevenue, updateRevenue } from '../api/revenueData';
 import { liveEvents } from '../pages/liveEvents';
+import menuItems from '../pages/addItems';
 import { showOrders } from '../pages/orders';
 
 const formEvents = () => {
@@ -26,6 +28,32 @@ const formEvents = () => {
           getOrders().then(showOrders);
         });
       });
+    }
+    if (e.target.id.includes('submit-item')) {
+      const payload = {
+        name: document.querySelector('#itemName').value,
+        image: document.querySelector('#image').value,
+        price: document.querySelector('#itemPrice').value,
+        description: document.querySelector('#itemDescription').value,
+      };
+      createItems(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateItems(patchPayload).then(() => {
+          getItems().then(menuItems);
+        });
+      });
+    }
+    if (e.target.id.includes('update-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        name: document.querySelector('#itemName').value,
+        image: document.querySelector('#image').value,
+        price: document.querySelector('#itemPrice').value,
+        description: document.querySelector('#itemDescription').value,
+        firebaseKey
+      };
+      updateItems(payload).then(() => getItems().then(menuItems));
     }
 
     if (e.target.id.includes('submit-event')) {
