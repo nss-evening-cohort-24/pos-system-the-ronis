@@ -44,7 +44,11 @@ body {
   margin-top: 10px;
 }
 
-// Event Cards
+// Event Page
+#add-event-btn {
+  font-weight: 600;
+}
+
 #event-cards {
   text-align: left;
   max-width: 70%;
@@ -59,15 +63,16 @@ body {
     background-color: transparent;
     border-bottom: 2px solid #333;
     margin-top: 1.5em;
+    // width: 100%;
 
     .event-img {
       height: 180px;
-      max-width: auto;
+      width: 300px;
+      object-fit: contain !important;
 
       img {
         height: 100%;
-        max-width: 100%;
-        object-fit: contain !important;
+        width: 100%;
       }
       
     }
@@ -78,6 +83,7 @@ body {
       margin-left: 2em;
       text-transform: uppercase;
       font-size: 1em;
+      width: 100%;
 
       .event-name {
         line-height: 1.25;
@@ -92,13 +98,33 @@ body {
         margin: 6px 0;
         font-style: italic;
         font-weight: 600;
+        text-wrap: wrap;
       }
 
-      .date-text {
+      #bottom-row{
+        display: flex;
+        justify-content: space-between;
         margin-top: 50px;
-        font-weight: 800;
-        font-size: 1.125em;
+
+        .date-text {
+          font-weight: 800;
+          font-size: 1.125em;
+        }
+  
+        .event-edit {
+          text-decoration: none;
+          color: #ffffff;
+          font-weight: 800;
+          padding: 0.25em 0.5em;
+        }
+  
+        .event-delete {
+          color: #ffffff;
+          padding: 0.37em 0.5em;
+        }
       }
+
+      
     }
   }
 }
@@ -118,11 +144,7 @@ body {
   }
   
   .gridForm-2 {
-    grid-column: span 2 / auto;
-  }
-  
-  .gridForm-3 {
-    grid-column: span 1 / auto;
+    grid-column: span 3 / auto;
   }
   
   .gridButton {

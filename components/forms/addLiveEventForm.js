@@ -2,18 +2,14 @@ import renderToDOM from '../../utils/renderToDom';
 
 const addLiveEventForm = (obj = {}) => {
   const domString = `
-  <form id="submit-event" class="mb-4 event-grid-container">
+  <form id="${obj.firebaseKey ? `update-event--${obj.firebaseKey}` : 'submit-event'}" class="mb-4 event-grid-container">
     <div class="form-group mb-3 gridForm-1">
       <label for="eventName" class="form-label">Event Name: </label>
       <input type="text" class="form-control" id="event-name" aria-describedby="eventName" value="${obj.eventName || ''}" required>
     </div>
     <div class="form-group mb-3 gridForm-2">
       <label for="event-date" class="form-label">Event Date: </label>
-      <input type="date" id="event-date" class="form-control" name="event-date" required>
-    </div>
-    <div class="form-group mb-3 gridForm-3">
-      <label for="event-time" class="form-label">Event Time: </label>
-      <input type="time" id="event-time" class="form-control" name="event-time" required>
+      <input type="datetime-local" id="event-date" class="form-control" name="event-date" required>
     </div>
     <div class="form-group mb-3 gridForm-4">
       <label for="even-image" class="form-label">Event Image: </label>

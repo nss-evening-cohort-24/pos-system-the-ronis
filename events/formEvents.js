@@ -32,7 +32,6 @@ const formEvents = () => {
       const payload = {
         eventName: document.querySelector('#event-name').value,
         eventDate: document.querySelector('#event-date').value,
-        eventTime: document.querySelector('#event-time').value,
         eventDescription: document.querySelector('#event-description').value,
         eventImage: document.querySelector('#event-image').value,
       };
@@ -81,6 +80,18 @@ const formEvents = () => {
         firebaseKey,
       };
       updateOrder(payload).then(() => getOrders().then(showOrders));
+    }
+
+    if (e.target.id.includes('update-event')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        eventName: document.querySelector('#event-name').value,
+        eventDate: document.querySelector('#event-date').value,
+        eventDescription: document.querySelector('#event-description').value,
+        eventImage: document.querySelector('#event-image').value,
+        firebaseKey,
+      };
+      updateEvent(payload).then(() => getEvents().then(liveEvents));
     }
   });
 };

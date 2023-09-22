@@ -13,6 +13,8 @@ import closeOrderForm from '../components/forms/closeOrderForm';
 import { getRevenue } from '../api/revenueData';
 import revenue from '../pages/revenue';
 import addLiveEventForm from '../components/forms/addLiveEventForm';
+import { deleteEvent, getEvents, getSingleEvent } from '../api/eventsData';
+import { liveEvents } from '../pages/liveEvents';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -82,12 +84,26 @@ const domEvents = (user) => {
       addLiveEventForm();
     }
 
+    if (e.target.id.includes('event-edit')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleEvent(firebaseKey).then((event) => addLiveEventForm(event));
+    }
+
     if (e.target.id.includes('item-delete')) {
       const [, itemId, orderId] = e.target.id.split('--');
 
       getSingleItemOrder(itemId, orderId).then((orderItem) => deleteItemOrder(orderItem.firebaseKey)).then(() => {
         getOrderDetails(orderId).then((res) => orderDetails(res));
       });
+    }
+
+    if (e.target.id.includes('event-delete')) {
+      if (window.confirm('Do you want to delete?')) {
+        const [, firebaseKey] = e.target.id.split('--');
+        deleteEvent(firebaseKey).then(() => {
+          getEvents(user).then((array) => liveEvents(array));
+        });
+      }
     }
   });
 };
