@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import { getEvents } from '../api/eventsData';
-import { getOrders } from '../api/ordersData';
-=======
 import { getOrders, searchOrders } from '../api/ordersData';
->>>>>>> main
 import addOrderForm from '../components/forms/addOrderForm';
 import { emptyEvents, liveEvents } from '../pages/liveEvents';
 import { emptyOrders, showOrders } from '../pages/orders';
