@@ -7,20 +7,32 @@ const orderDetails = (res, user) => {
   console.warn(admin);
   let domString = '';
   if (res.orderItems.length < 1) {
-    domString = `<div style="display:grid;"><h1> No Items </h1><div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button></div><div>`;
+    domString = `
+    <div>
+      <h1> No Items </h1>
+    </div>
+    <div>
+      <button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button>    
+    <div>`;
   } else {
     const total = res.orderItems.reduce((acc, curr) => Number(acc) + Number(curr.price), 0);
-    domString = `<div style="display:grid;"><h1>TOTAL: $${res.orderItems.reduce((acc, curr) => acc + curr.price, 0)} </h1>`;
+    domString = `
+    <div id="total-text">
+      <h1>TOTAL: $${total} </h1>
+      ${res.status ? '' : `<div id="add-payment"><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success" style="margin: 10px 5px;">ADD ITEM</button><button type="button" id="payment-type-btn--${res.firebaseKey}--${total}" class="btn btn-primary">GO TO PAYMENT</button></div></div>`}
+    </div>
+    `;
     res.orderItems.forEach((item) => {
-      domString += `<div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">${item.name}</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">$${item.price}</h6>
-        ${res.status ? '' : `
-          <a href="#" id='item-edit--${item.firebaseKey}' class="card-link">Edit</a>
-          <a href="#" i id='item-delete--${item.firebaseKey}--${res.firebaseKey}' class="fa-solid fa-trash-can" /></a>`}
-      </div>
-    </div>`;
+      domString += `
+        <div id="order-items-card">
+          <div id="order-items-text">
+            <h5 class="card-title">${item.name}</h5>
+          </div>
+          <div id="bottom-details">
+            <h6 class="card-subtitle text-body-secondary">$${item.price}</h6>
+            ${res.status ? '' : `<a href="#" i id='item-delete--${item.firebaseKey}--${res.firebaseKey}' class="fa-solid  fa-trash-can" /></a>`}
+          </div>
+        </div>`;
     });
     admin.forEach((adminuser) => {
       if (adminuser === user.uid) {
@@ -31,7 +43,7 @@ const orderDetails = (res, user) => {
     });
   }
 
-  renderToDOM('#orders', domString);
+  renderToDOM('#details', domString);
 };
 
 export default orderDetails;
