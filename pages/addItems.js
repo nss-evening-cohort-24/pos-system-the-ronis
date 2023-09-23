@@ -24,12 +24,18 @@ const menuItems = (array, orderId, user) => {
             <p class="card-text">${item.description}</p>
           <div>
           <button id="add-item-order-btn--${item.firebaseKey}--${orderId}" type="button" class="btn btn-success">ADD ITEM TO CART</button>
-          </div>
-          ${item.status ? '' : `
-          <a href="#" id="item-edit-admin--${item.firebaseKey}" class="card-link">Edit</a>
-          <a i id='item-erase-admin--${item.firebaseKey}--${orderId}' class="fa-solid fa-trash-can" /></a>`}
-
-        </div>
+          </div>`;
+      admin.forEach((adminuser) => {
+        if (adminuser === user.uid) {
+          domString += `${item.status ? '' : `
+              <a href="#" id="item-edit-admin--${item.firebaseKey}" class="card-link">Edit</a>
+              <a i id='item-erase-admin--${item.firebaseKey}--${orderId}' class="fa-solid fa-trash-can" /></a>`}`;
+        } else {
+          domString += '';
+        }
+      });
+      domString
+        += `</div>
       </div>`;
     });
     domString += '</div>';

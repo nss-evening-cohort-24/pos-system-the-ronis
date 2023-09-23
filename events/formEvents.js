@@ -119,7 +119,7 @@ const formEvents = (user) => {
         eventImage: document.querySelector('#event-image').value,
         firebaseKey,
       };
-      updateEvent(payload).then(() => getEvents().then(liveEvents));
+      updateEvent(payload).then(() => getEvents().then((res) => liveEvents(res, user)));
     }
   });
 };
