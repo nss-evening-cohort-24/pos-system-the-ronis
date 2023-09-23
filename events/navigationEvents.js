@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { getEvents } from '../api/eventsData';
 import { getOrders, searchOrders } from '../api/ordersData';
 import addOrderForm from '../components/forms/addOrderForm';
