@@ -19,6 +19,7 @@ const formEvents = (user) => {
         email: document.querySelector('#customer-email').value,
         ordertype: document.querySelector('#order-type').value,
         status: false,
+        user: user.uid
       };
 
       createOrder(payload).then(({ name }) => {

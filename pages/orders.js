@@ -8,35 +8,37 @@ const emptyOrders = () => {
 };
 
 const showOrders = (array, user) => {
+  let domString = '';
   clearDom();
   if (array.length < 1) {
     emptyOrders();
   } else {
-    let domString = '';
+    domString = '';
     array.forEach((item) => {
       domString += `
-        <div class="orderCard card">
-          <div class="card-body cardStyle" style="height: 280px; width: 200px;">
-          <div>
-              <h5 class="card-title">${item.name}</h5>
-                <p class="card-text bold">${item.status ? 'closed' : 'open'}</p>
-                <p class="card-text bold">${item.phone}</p>
-                <p class="card-text emailSmall bold">${item.email}</p>
-                <p class="card-text bold">${item.ordertype}</p>
-  <a href="#" id='order-details--${item.firebaseKey}' class="card-link">Details</a>`;
-      admin.forEach((adminuser) => {
-        if (adminuser === user.uid) {
+            <div class="orderCard card">
+              <div class="card-body cardStyle" style="height: 280px; width: 200px;">
+              <div>
+                  <h5 class="card-title">${item.name}</h5>
+                    <p class="card-text bold">${item.status ? 'closed' : 'open'}</p>
+                    <p class="card-text bold">${item.phone}</p>
+                    <p class="card-text emailSmall bold">${item.email}</p>
+                    <p class="card-text bold">${item.ordertype}</p>
+      <a href="#" id='order-details--${item.firebaseKey}' class="card-link">Details</a>`;
+      admin.forEach((au) => {
+        if (au === user.uid) {
           domString += `${item.status ? ''
             : `<a href="#" id='order-edit--${item.firebaseKey}' class="card-link">Edit</a>
-  <a href="#" i id='order-delete--${item.firebaseKey}' class="fa-solid fa-trash-can" /></a>`}`;
+      <a href="#" i id='order-delete--${item.firebaseKey}' class="fa-solid fa-trash-can" /></a>`}`;
         } else {
           domString += '';
         }
       });
       domString += `</div>
-  </div>
-  </div>`;
+      </div>
+      </div>`;
     });
+
     renderToDOM('#orders', domString);
   }
 };
