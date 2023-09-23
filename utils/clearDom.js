@@ -6,6 +6,7 @@ const clearDom = () => {
   document.querySelector('#event-cards').innerHTML = '';
   document.querySelector('#menu').innerHTML = '';
   document.querySelector('#details').innerHTML = '';
+  document.querySelector('#revenue').innerHTML = '';
 };
 
 export default clearDom;

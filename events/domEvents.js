@@ -6,7 +6,7 @@ import { deleteItem, getItems, getSingleItem } from '../api/itemsData';
 import {
   createOrderItem, deleteItemOrder, getSingleItemOrder, updateOrderItems
 } from '../api/orderItems';
-import orderDetails from '../pages/showItems/orderDetails';
+import orderDetails from '../pages/showItems';
 import { deleteItemOrderRelationship, getOrderDetails } from '../api/mergedData';
 import closeOrderForm from '../components/forms/closeOrderForm';
 import { getRevenue } from '../api/revenueData';
