@@ -115,7 +115,7 @@ const domEvents = (user) => {
       if (window.confirm('Do you want to delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
         deleteEvent(firebaseKey).then(() => {
-          getEvents(user).then((array) => liveEvents(array));
+          getEvents(user).then((array) => liveEvents(array, user));
         });
       }
     }

@@ -68,7 +68,7 @@ const formEvents = (user) => {
         const patchPayload = { firebaseKey: name };
 
         updateEvent(patchPayload).then(() => {
-          getEvents().then(liveEvents);
+          getEvents().then((res) => liveEvents(res, user));
         });
       });
     }

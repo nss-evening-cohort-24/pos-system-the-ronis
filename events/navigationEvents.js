@@ -20,7 +20,7 @@ const navigationEvents = (user) => {
     getEvents(user.uid).then((array) => {
       clearDom();
       if (array.length) {
-        liveEvents(array);
+        liveEvents(array, user);
       } else {
         emptyEvents();
       }
