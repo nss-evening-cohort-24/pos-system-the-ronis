@@ -1,5 +1,6 @@
 import addEventButton from '../utils/addEventButton';
 import renderToDOM from '../utils/renderToDom';
+import { admin } from '../utils/client';
 
 const emptyEvents = () => {
   addEventButton();
@@ -7,8 +8,12 @@ const emptyEvents = () => {
   renderToDOM('#event-cards', domString);
 };
 
-const liveEvents = (array) => {
-  addEventButton();
+const liveEvents = (array, user) => {
+  admin.forEach((adminuser) => {
+    if (adminuser === user.uid) {
+      addEventButton();
+    }
+  });
   let domString = '';
 
   if (array.length < 1) {
@@ -37,11 +42,17 @@ const liveEvents = (array) => {
             <div id="bottom-row">
               <div class="date-text">
                 <span class="card-text bold">${f.format(date)}</span>
-              </div>
-              <div id="buttons">
-                <a href="#" id='event-edit--${item.firebaseKey}' class="card-link event-edit">Edit</a>
-                <a href="#" id='event-delete--${item.firebaseKey}' class="fa-solid fa-trash-can event-delete" /></a>
-              </div>
+              </div>`;
+      admin.forEach((adminuser) => {
+        if (adminuser === user.uid) {
+          domString += `<div id="buttons">
+          <a href="#" id='event-edit--${item.firebaseKey}' class="card-link event-edit">Edit</a>
+          <a href="#" id='event-delete--${item.firebaseKey}' class="fa-solid fa-trash-can event-delete" /></a>`;
+        } else {
+          domString += '';
+        }
+      });
+      domString += `</div>
             </div>
           </div>
         </div>`;

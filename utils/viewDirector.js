@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import loginButton from '../components/buttons/loginButton';
-import client from './client';
+import { client } from './client';
 import startApp from './startApp';
 
 const ViewDirectorBasedOnUserAuthStatus = () => {

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { getEvents } from '../api/eventsData';
 import { getOrders, searchOrders } from '../api/ordersData';
 import addOrderForm from '../components/forms/addOrderForm';
@@ -10,7 +11,7 @@ const navigationEvents = (user) => {
   document.querySelector('#view-orders').addEventListener('click', () => {
     getOrders(user.uid).then((array) => {
       if (array.length) {
-        showOrders(array);
+        showOrders(array, user);
       } else {
         emptyOrders();
       }
@@ -21,7 +22,7 @@ const navigationEvents = (user) => {
     getEvents(user.uid).then((array) => {
       clearDom();
       if (array.length) {
-        liveEvents(array);
+        liveEvents(array, user);
       } else {
         emptyEvents();
       }
@@ -44,7 +45,7 @@ const navigationEvents = (user) => {
       searchOrders(searchValue, user.uid)
         .then((search) => {
           if (search.length) {
-            showOrders(search);
+            showOrders(search, user);
           } else {
             emptyOrders();
           }

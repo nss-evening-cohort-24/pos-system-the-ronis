@@ -8,7 +8,7 @@ import { liveEvents } from '../pages/liveEvents';
 import menuItems from '../pages/addItems';
 import { showOrders } from '../pages/orders';
 
-const formEvents = () => {
+const formEvents = (user) => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -19,13 +19,14 @@ const formEvents = () => {
         email: document.querySelector('#customer-email').value,
         ordertype: document.querySelector('#order-type').value,
         status: false,
+        user: user.uid
       };
 
       createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
         updateOrder(patchPayload).then(() => {
-          getOrders().then(showOrders);
+          getOrders().then((res) => showOrders(res, user));
         });
       });
     }
@@ -40,7 +41,7 @@ const formEvents = () => {
         const patchPayload = { firebaseKey: name };
 
         updateItems(patchPayload).then(() => {
-          getItems().then(menuItems);
+          getItems().then(menuItems, user);
         });
       });
     }
@@ -68,7 +69,7 @@ const formEvents = () => {
         const patchPayload = { firebaseKey: name };
 
         updateEvent(patchPayload).then(() => {
-          getEvents().then(liveEvents);
+          getEvents().then((res) => liveEvents(res, user));
         });
       });
     }
@@ -91,7 +92,7 @@ const formEvents = () => {
             const patchPayload = { firebaseKey: name };
 
             updateRevenue(patchPayload).then(() => {
-              getOrders().then(showOrders);
+              getOrders().then((response) => showOrders(response, user));
             });
           });
         });
@@ -107,7 +108,7 @@ const formEvents = () => {
         ordertype: document.querySelector('#order-type').value,
         firebaseKey,
       };
-      updateOrder(payload).then(() => getOrders().then(showOrders));
+      updateOrder(payload).then(() => getOrders().then((response) => showOrders(response, user)));
     }
 
     if (e.target.id.includes('update-event')) {
@@ -119,7 +120,7 @@ const formEvents = () => {
         eventImage: document.querySelector('#event-image').value,
         firebaseKey,
       };
-      updateEvent(payload).then(() => getEvents().then(liveEvents));
+      updateEvent(payload).then(() => getEvents().then((res) => liveEvents(res, user)));
     }
   });
 };
