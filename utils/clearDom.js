@@ -1,9 +1,11 @@
 const clearDom = () => {
-  document.querySelector('#button-container').innerHTML = '';
+  document.querySelector('#home').innerHTML = '';
   document.querySelector('#form-container').innerHTML = '';
   document.querySelector('#orders').innerHTML = '';
   document.querySelector('#event-button').innerHTML = '';
   document.querySelector('#event-cards').innerHTML = '';
+  document.querySelector('#menu').innerHTML = '';
+  document.querySelector('#details').innerHTML = '';
 };
 
 export default clearDom;
