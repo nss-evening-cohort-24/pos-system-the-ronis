@@ -1,8 +1,10 @@
 import renderToDOM from '../utils/renderToDom';
 import clearDom from '../utils/clearDom';
+import { admin } from '../utils/client';
 
-const orderDetails = (res) => {
+const orderDetails = (res, user) => {
   clearDom();
+  console.warn(admin);
   let domString = '';
   if (res.orderItems.length < 1) {
     domString = `<div style="display:grid;"><h1> No Items </h1><div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button></div><div>`;
@@ -20,7 +22,13 @@ const orderDetails = (res) => {
       </div>
     </div>`;
     });
-    domString += `${res.status ? '' : `<div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" id="payment-type-btn--${res.firebaseKey}--${total}" class="btn btn-primary">GO TO PAYMENT</button></div></div>`}`;
+    admin.forEach((adminuser) => {
+      if (adminuser === user.uid) {
+        domString += `${res.status ? '' : `<div><button id="add-item-btn--${res.firebaseKey}" type="button" class="btn btn-success">ADD ITEM</button><button type="button" id="payment-type-btn--${res.firebaseKey}--${total}" class="btn btn-primary">GO TO PAYMENT</button></div></div>`}`;
+      } else {
+        domString += '';
+      }
+    });
   }
 
   renderToDOM('#orders', domString);

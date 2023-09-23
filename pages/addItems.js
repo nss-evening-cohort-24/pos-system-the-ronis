@@ -1,10 +1,15 @@
 import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
+import { admin } from '../utils/client';
 
-const menuItems = (array, orderId) => {
+const menuItems = (array, orderId, user) => {
   clearDom();
   let domString = '';
-  domString += '<a href="#" id="create-item-admin-btn" i class="fa-regular fa-square-plus" style="color: #e2c928;"></a>';
+  admin.forEach((adminuser) => {
+    if (adminuser === user.uid) {
+      domString += '<a href="#" id="create-item-admin-btn" i class="fa-regular fa-square-plus" style="color: #e2c928;"></a>';
+    }
+  });
   if (!array.length) {
     domString += '<h1>All Available Items Are Added To Order</h1>';
   } else {

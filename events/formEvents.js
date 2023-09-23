@@ -8,7 +8,7 @@ import { liveEvents } from '../pages/liveEvents';
 import menuItems from '../pages/addItems';
 import { showOrders } from '../pages/orders';
 
-const formEvents = () => {
+const formEvents = (user) => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -25,7 +25,7 @@ const formEvents = () => {
         const patchPayload = { firebaseKey: name };
 
         updateOrder(patchPayload).then(() => {
-          getOrders().then(showOrders);
+          getOrders().then((res) => showOrders(res, user));
         });
       });
     }
@@ -40,7 +40,7 @@ const formEvents = () => {
         const patchPayload = { firebaseKey: name };
 
         updateItems(patchPayload).then(() => {
-          getItems().then(menuItems);
+          getItems().then(menuItems, user);
         });
       });
     }
@@ -91,7 +91,7 @@ const formEvents = () => {
             const patchPayload = { firebaseKey: name };
 
             updateRevenue(patchPayload).then(() => {
-              getOrders().then(showOrders);
+              getOrders().then((response) => showOrders(response, user));
             });
           });
         });
@@ -107,7 +107,7 @@ const formEvents = () => {
         ordertype: document.querySelector('#order-type').value,
         firebaseKey,
       };
-      updateOrder(payload).then(() => getOrders().then(showOrders));
+      updateOrder(payload).then(() => getOrders().then((response) => showOrders(response, user)));
     }
 
     if (e.target.id.includes('update-event')) {

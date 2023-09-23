@@ -38,7 +38,7 @@ const navigationEvents = (user) => {
       searchOrders(searchValue, user.uid)
         .then((search) => {
           if (search.length) {
-            showOrders(search);
+            showOrders(search, user);
           } else {
             emptyOrders();
           }

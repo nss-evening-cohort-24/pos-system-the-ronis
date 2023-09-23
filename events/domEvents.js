@@ -27,7 +27,7 @@ const domEvents = (user) => {
       if (window.confirm('Do you want to delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
         deleteItemOrderRelationship(firebaseKey).then(() => {
-          getOrders(user).then((array) => showOrders(array));
+          getOrders(user).then((array) => showOrders(array, user));
         });
       }
     }
@@ -38,7 +38,7 @@ const domEvents = (user) => {
     if (e.target.id.includes('add-item-btn')) {
       const [, orderId] = e.target.id.split('--');
       getItems().then((array) => {
-        menuItems(array, orderId);
+        menuItems(array, orderId, user);
       });
     }
 
@@ -46,7 +46,7 @@ const domEvents = (user) => {
       // orderID is being deconstructed
       const [, firebaseKey] = e.target.id.split('--');
       getOrderDetails(firebaseKey).then((details) => {
-        orderDetails(details);
+        orderDetails(details, user);
       });
     }
 
