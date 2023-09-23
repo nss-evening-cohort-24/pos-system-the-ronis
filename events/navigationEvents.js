@@ -1,6 +1,9 @@
+import { getEvents } from '../api/eventsData';
 import { getOrders, searchOrders } from '../api/ordersData';
 import addOrderForm from '../components/forms/addOrderForm';
+import { emptyEvents, liveEvents } from '../pages/liveEvents';
 import { emptyOrders, showOrders } from '../pages/orders';
+import clearDom from '../utils/clearDom';
 
 const navigationEvents = (user) => {
   document.querySelector('#view-orders').addEventListener('click', () => {
@@ -9,6 +12,17 @@ const navigationEvents = (user) => {
         showOrders(array);
       } else {
         emptyOrders();
+      }
+    });
+  });
+
+  document.querySelector('#live-events-page').addEventListener('click', () => {
+    getEvents(user.uid).then((array) => {
+      clearDom();
+      if (array.length) {
+        liveEvents(array);
+      } else {
+        emptyEvents();
       }
     });
   });
