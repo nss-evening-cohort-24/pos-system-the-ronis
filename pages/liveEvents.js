@@ -9,7 +9,11 @@ const emptyEvents = () => {
 };
 
 const liveEvents = (array, user) => {
-  addEventButton();
+  admin.forEach((adminuser) => {
+    if (adminuser === user.uid) {
+      addEventButton();
+    }
+  });
   let domString = '';
 
   if (array.length < 1) {
