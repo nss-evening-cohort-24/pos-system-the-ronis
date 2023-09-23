@@ -4,34 +4,76 @@
 
 body {
   background-color: #282828;
-  color: brown;
+  color: white;
   text-align: center;
   margin-top: 100px;
+  font-weight: 600;
 }
-.orderCards {
-  justify-content: center;
-  align-items: center;
-  max-width: 250px;
-  margin: 20px;
+
+.navbar {
+
+  #navbar-logo {
+    height: 60px;
+    width: 60px;
+  }
+
 }
-.cardStyle {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  background-color: rgb(247, 246, 244);
-  border: 2px solid rgb(52, 155, 39);
-}
-.emailSmall {
-  font-size: 14px;
-}
+
 #orders {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 50px auto;
-  width: 70%;
-}
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4em;
+  padding: 4em;
+  text-align: left;
+  text-transform: uppercase;
+
+  .card-style {
+    height: 200px;
+    width: 350px;
+    background-color: #282828;
+    color: white;
+    border-bottom: 1px solid lightgray;
+
+    .order-name {
+      font-size: 1.5rem;
+      font-weight: 700 !important;
+    }
+    
+    .order-status {
+      text-align: center;
+      width: 25%;
+      border: 2px solid green;
+      background-color: green;
+    }
+    
+    .emailSmall {
+      font-size: 0.875rem;
+    }
+  }
+}   
+
+// .orderCards {
+//   justify-content: center;
+//   align-items: center;
+//   max-width: 250px;
+//   margin: 20px;
+// }
+// .cardStyle {
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-end;
+//   background-color: rgb(247, 246, 244);
+//   border: 2px solid rgb(52, 155, 39);
+// }
+// 
+// #orders {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: center;
+//   margin: 50px auto;
+//   width: 70%;
+// }
 
 #form-container {
   width: 60%;
