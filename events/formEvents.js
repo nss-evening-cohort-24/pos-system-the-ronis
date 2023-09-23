@@ -1,14 +1,17 @@
+import { createEvent, getEvents, updateEvent } from '../api/eventsData';
 import { createItems, getItems, updateItems } from '../api/itemsData';
 import {
   createOrder, getOrders, getSingleOrder, updateOrder
 } from '../api/ordersData';
 import { createRevenue, updateRevenue } from '../api/revenueData';
+import { liveEvents } from '../pages/liveEvents';
 import menuItems from '../pages/addItems';
 import { showOrders } from '../pages/orders';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
+
     if (e.target.id.includes('submit-order')) {
       const payload = {
         name: document.querySelector('#order-name').value,
@@ -53,6 +56,23 @@ const formEvents = () => {
       updateItems(payload).then(() => getItems().then(menuItems));
     }
 
+    if (e.target.id.includes('submit-event')) {
+      const payload = {
+        eventName: document.querySelector('#event-name').value,
+        eventDate: document.querySelector('#event-date').value,
+        eventDescription: document.querySelector('#event-description').value,
+        eventImage: document.querySelector('#event-image').value,
+      };
+
+      createEvent(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateEvent(patchPayload).then(() => {
+          getEvents().then(liveEvents);
+        });
+      });
+    }
+
     if (e.target.id.includes('close-order-btn')) {
       const [, firebaseKey, subTotal] = e.target.id.split('--');
       const date = (new Date()).toLocaleString('en-US');
@@ -88,6 +108,18 @@ const formEvents = () => {
         firebaseKey,
       };
       updateOrder(payload).then(() => getOrders().then(showOrders));
+    }
+
+    if (e.target.id.includes('update-event')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        eventName: document.querySelector('#event-name').value,
+        eventDate: document.querySelector('#event-date').value,
+        eventDescription: document.querySelector('#event-description').value,
+        eventImage: document.querySelector('#event-image').value,
+        firebaseKey,
+      };
+      updateEvent(payload).then(() => getEvents().then(liveEvents));
     }
   });
 };

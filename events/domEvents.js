@@ -13,6 +13,9 @@ import { getRevenue } from '../api/revenueData';
 import revenue from '../pages/revenue';
 import updateItemForm from '../components/forms/updateItemForm';
 import menuItems from '../pages/addItems';
+import addLiveEventForm from '../components/forms/addLiveEventForm';
+import { deleteEvent, getEvents, getSingleEvent } from '../api/eventsData';
+import { liveEvents } from '../pages/liveEvents';
 
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -77,6 +80,15 @@ const domEvents = (user) => {
       const [, orderId, total] = e.target.id.split('--');
       closeOrderForm(orderId, total);
     }
+
+    if (e.target.id.includes('add-event-btn')) {
+      addLiveEventForm();
+    }
+
+    if (e.target.id.includes('event-edit')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleEvent(firebaseKey).then((event) => addLiveEventForm(event));
+    }
     if (e.target.id.includes('create-item-admin-btn')) {
       updateItemForm();
     }
@@ -97,6 +109,15 @@ const domEvents = (user) => {
       getSingleItemOrder(itemId, orderId).then((orderItem) => deleteItemOrder(orderItem.firebaseKey)).then(() => {
         getOrderDetails(orderId).then((res) => orderDetails(res));
       });
+    }
+
+    if (e.target.id.includes('event-delete')) {
+      if (window.confirm('Do you want to delete?')) {
+        const [, firebaseKey] = e.target.id.split('--');
+        deleteEvent(firebaseKey).then(() => {
+          getEvents(user).then((array) => liveEvents(array));
+        });
+      }
     }
   });
 };
