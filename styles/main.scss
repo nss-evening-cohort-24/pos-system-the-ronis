@@ -3,77 +3,107 @@
 
 
 body {
-  background-color: #282828;
-  color: white;
+  background-color: white;
+  // color: #f8f8f2;
+  // text-shadow: -1px 1px 2px #282a36;
   text-align: center;
   margin-top: 100px;
   font-weight: 600;
 }
 
 .navbar {
+  background-color: #141E46 !important;
 
   #navbar-logo {
     height: 60px;
     width: 60px;
   }
 
+  #view-orders, #create-order, #live-events-page {
+    color: white;
+  }
+
 }
+
+
 
 #orders {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 4em;
-  padding: 4em;
+  grid-gap: 2em;
+  padding: 0 0 0 8em;
   text-align: left;
   text-transform: uppercase;
 
   .card-style {
     height: 200px;
-    width: 350px;
-    background-color: #282828;
-    color: white;
-    border-bottom: 1px solid lightgray;
+    width: 400px;
+    background-color: transparent;
+    // color: #f8f8f2;
+    // text-shadow: -1px 1px 2px #282a36;
+    border-bottom: 1px solid #333;
 
-    .order-name {
-      font-size: 1.5rem;
-      font-weight: 700 !important;
-    }
+    .order-title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .order-name {
+        font-size: 1.5rem;
+        font-weight: 700 !important;
+      }
     
-    .order-status {
-      text-align: center;
-      width: 25%;
-      border: 2px solid green;
-      background-color: green;
+      #order-open {
+        color: white;
+        text-align: center;
+        width: 25%;
+        height: 10%;
+        border-radius: 5px;
+        border: 2px solid #3acb12;
+        background-color: #3acb12;
+      }
+
+      #order-closed {
+        color: white;
+        text-align: center;
+        width: 25%;
+        height: 10%;
+        border-radius: 5px;
+        border: 2px solid #fb4934;
+        background-color: #fb4934;
+      }
     }
-    
+
+    #order-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      
+      .order-details {
+        text-decoration: none;
+        color: black;
+        font-weight: 800;
+      }
+
+      .order-edit {
+        text-decoration: none;
+        color: black;
+        font-weight: 800;
+        margin-right: 15px;
+      }
+      
+      .order-delete {
+        color: black;
+      }
+
+      
+    }
+
     .emailSmall {
       font-size: 0.875rem;
     }
   }
-}   
-
-// .orderCards {
-//   justify-content: center;
-//   align-items: center;
-//   max-width: 250px;
-//   margin: 20px;
-// }
-// .cardStyle {
-//   display: flex;
-//   justify-content: center;
-//   align-items: flex-end;
-//   background-color: rgb(247, 246, 244);
-//   border: 2px solid rgb(52, 155, 39);
-// }
-// 
-// #orders {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 50px auto;
-//   width: 70%;
-// }
+}
 
 .btn-hide {
   display: flex;
@@ -88,7 +118,10 @@ body {
 
 // Event Page
 #add-event-btn {
+  width: 6%;
+  height: 5%;
   font-weight: 600;
+  margin-bottom: 50px;
 }
 
 #event-cards {
@@ -105,7 +138,6 @@ body {
     background-color: transparent;
     border-bottom: 2px solid #333;
     margin-top: 1.5em;
-    // width: 100%;
 
     .event-img {
       height: 180px;
@@ -155,13 +187,13 @@ body {
   
         .event-edit {
           text-decoration: none;
-          color: #ffffff;
+          color: black;
           font-weight: 800;
           padding: 0.25em 0.5em;
         }
   
         .event-delete {
-          color: #ffffff;
+          color: black;
           padding: 0.37em 0.5em;
         }
       }
@@ -197,25 +229,29 @@ body {
 }
 
 #form-container {
-  width: 60%;
-  margin: 150px auto !important; 
-  justify-content: center;
-  color: white;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 30%;
+  margin: 150px auto;
+  text-align: left !important;
   
-  .form-group {
-    text-align: left !important;
+  #submit-order {
+    grid-column: span 2 / auto;
+  }
+
+  .update-order {
+    grid-column: span 2 / auto;
   }
 
   #submit {
-    justify-self: center !important;  
-  }
-
-  #formModal {
-    color: black;
+    font-weight: 700;
+    width: 30%;
+    text-align: center !important;
   }
 }
 .itemNameTitle {
-  color: white;
+  color: #f8f8f2;
 }
 .cards {
   display: grid;
