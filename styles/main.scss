@@ -3,35 +3,132 @@
 
 
 body {
-  background-color: #212121;
-  color: #ffffff;
+  background-color: white;
+  // color: #f8f8f2;
+  // text-shadow: -1px 1px 2px #282a36;
   text-align: center;
   margin-top: 100px;
-  box-sizing: border-box;
+  font-weight: 600;
 }
-.orderCards {
-  justify-content: center;
-  align-items: center;
-  max-width: 250px;
-  margin: 20px;
+
+.navbar {
+  background-color: #141E46 !important;
+
+  #navbar-logo {
+    height: 60px;
+    width: 60px;
+  }
+
+  #view-orders, #create-order, #live-events-page {
+    color: white;
+  }
+
+  #google-auth {
+    font-weight: 600;
+    background-color: #C70039 !important;
+  }
+
 }
-.cardStyle {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  background-color: rgb(247, 246, 244);
-  border: 2px solid rgb(52, 155, 39);
+
+#home-container {   
+  display: flex;   
+  flex-direction: column;   
+  justify-content: center;   
+  gap: 200px;   
+  margin-top: 300px;      
+  
+  .welcome-message {     
+    font-weight: bold;   
+  }    
+    
+  .home-view {     
+    display: flex; 
+    flex-direction: column;     
+    justify-content: center;     
+    gap: 25px;     
+    width: 25%;     
+    margin: 0 auto;   
+  } 
 }
-.emailSmall {
-  font-size: 14px;
-}
+
+
+
 #orders {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 50px auto;
-  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2em;
+  padding: 0 0 0 8em;
+  text-align: left;
+  text-transform: uppercase;
+
+  .card-style {
+    height: 200px;
+    width: 400px;
+    background-color: transparent;
+    // color: #f8f8f2;
+    // text-shadow: -1px 1px 2px #282a36;
+    border-bottom: 1px solid #333;
+
+    .order-title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .order-name {
+        font-size: 1.5rem;
+        font-weight: 700 !important;
+      }
+    
+      #order-open {
+        color: white;
+        text-align: center;
+        width: 25%;
+        height: 10%;
+        border-radius: 5px;
+        border: 2px solid #3acb12;
+        background-color: #3acb12;
+      }
+
+      #order-closed {
+        color: white;
+        text-align: center;
+        width: 25%;
+        height: 10%;
+        border-radius: 5px;
+        border: 2px solid #fb4934;
+        background-color: #fb4934;
+      }
+    }
+
+    #order-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      
+      .order-details {
+        text-decoration: none;
+        color: black;
+        font-weight: 800;
+      }
+
+      .order-edit {
+        text-decoration: none;
+        color: black;
+        font-weight: 800;
+        margin-right: 15px;
+      }
+      
+      .order-delete {
+        color: black;
+      }
+
+      
+    }
+
+    .emailSmall {
+      font-size: 0.875rem;
+    }
+  }
 }
 
 .btn-hide {
@@ -47,7 +144,10 @@ body {
 
 // Event Page
 #add-event-btn {
+  width: 6%;
+  height: 5%;
   font-weight: 600;
+  margin-bottom: 50px;
 }
 
 #event-cards {
@@ -62,9 +162,8 @@ body {
     align-items: center;
     padding: 0 0 1.5rem;
     background-color: transparent;
-    border-bottom: 2px solid #333;
+    border-bottom: 1px solid #333;
     margin-top: 1.5em;
-    // width: 100%;
 
     .event-img {
       height: 180px;
@@ -114,13 +213,13 @@ body {
   
         .event-edit {
           text-decoration: none;
-          color: #ffffff;
+          color: black;
           font-weight: 800;
           padding: 0.25em 0.5em;
         }
   
         .event-delete {
-          color: #ffffff;
+          color: black;
           padding: 0.37em 0.5em;
         }
       }
@@ -128,6 +227,56 @@ body {
       
     }
   }
+}
+
+// Order Details
+#details {
+  display: grid;
+  width: 90%;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+}
+#total-text {
+  text-align: center;
+}
+
+#order-items-card {
+  width: 350px;
+  height: 100px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #333;
+  grid-column-start: 2;
+  display: flex;
+  flex-direction: column;
+
+  #order-items-text {
+    text-align: left;
+
+    .card-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    
+  }
+
+  #bottom-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0 0 0;
+
+    .card-subtitle {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .fa-solid {
+      color: #333;
+    }
+  }
+
+ 
 }
 
 
@@ -156,31 +305,49 @@ body {
 }
 
 #form-container {
-  width: 60%;
-  margin: 150px auto !important; 
-  justify-content: center;
-  color: white;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 30%;
+  margin: 150px auto;
+  text-align: left !important;
   
-  .form-group {
-    text-align: left !important;
+  #submit-order {
+    grid-column: span 2 / auto;
+  }
+
+  .update-order {
+    grid-column: span 2 / auto;
+  }
+
+  #submit-item {
+    grid-column: span 2 / auto;
   }
 
   #submit {
-    justify-self: center !important;  
-  }
-
-  #formModal {
-    color: black;
+    font-weight: 700;
+    width: 30%;
+    text-align: center !important;
   }
 }
+
+// Menu
+#menu{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+  width: 70%;
+  text-transform: uppercase;
+}
 .itemNameTitle {
-  color: white;
+  color: #f8f8f2;
 }
 .cards {
   display: grid;
   margin: 30px auto;
   grid-template-columns: repeat(3, 1fr);
-  // grid-template-rows: repeat(auto-fill, 200px);
   grid-gap: 1rem;
 }
 

@@ -29,7 +29,7 @@ const menuItems = (array, orderId) => {
     });
     domString += '</div>';
   }
-  renderToDOM('#orders', domString);
+  renderToDOM('#menu', domString);
 };
 
 export default menuItems;
