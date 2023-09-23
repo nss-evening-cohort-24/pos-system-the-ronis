@@ -9,7 +9,7 @@ const navigationEvents = (user) => {
   document.querySelector('#view-orders').addEventListener('click', () => {
     getOrders(user.uid).then((array) => {
       if (array.length) {
-        showOrders(array);
+        showOrders(array, user);
       } else {
         emptyOrders();
       }

@@ -12,7 +12,6 @@ const showOrders = (array, user) => {
   if (array.length < 1) {
     emptyOrders();
   } else {
-    console.warn(admin, user.uid);
     let domString = '';
     array.forEach((item) => {
       domString += `
