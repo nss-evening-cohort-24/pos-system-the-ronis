@@ -8,7 +8,7 @@ const client = {
   measurementId: process.env.APP_MEASUREMENT_ID,
 };
 
-const admin = process.env.APP_ADMIN;
+const admin = process.env.APP_ADMIN.split('"');
 
 export {
   client,

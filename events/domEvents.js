@@ -20,7 +20,7 @@ import { liveEvents } from '../pages/liveEvents';
 const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     if (e.target.id.includes('home-view-orders-btn')) {
-      getOrders(user).then((array) => showOrders(array));
+      getOrders(user).then((array) => showOrders(array, user));
     }
 
     if (e.target.id.includes('order-delete')) {
